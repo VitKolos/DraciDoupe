@@ -1,0 +1,59 @@
+body {
+	font: 3vw Calibri, sans-serif;
+}
+
+.button {
+	padding: 8px 3vw;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 4px 2px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
+	color: white; 
+	border-radius: 12px;
+	font-family: Calibri;
+}
+
+.button:hover {
+	background-color: white;
+	color: black;
+}
+
+.yes {
+	background-color: #4CAF50;
+	font-size: 3vw;
+	border: 2px solid #4CAF50;
+}
+	
+.no {
+	background-color: red;
+	font-size: 20px;
+	border: 2px solid red;
+}
+
+.boy {
+	background-color: #82e9ff;
+	font-size: 3vw;
+	border: 2px solid #82e9ff;
+}
+
+.girl {
+	background-color: pink;
+	font-size: 20px;
+	border: 2px solid pink;
+}
+
+.start {
+	padding: 16px 32px;
+	background-color: #4CAF50;
+	font-size: 50px;
+	border: 2px solid #4CAF50;
+}
+
+.vol {
+	background-color: #00277a;
+	font-size: 20px;
+	border: 2px solid #00277a;
+}
