@@ -6,7 +6,9 @@
         <title>Přihlásit se</title>
     </head>
     <body>
-        <div style="text-align:center"><?php session_start(); if(isset($_GET["id"]) && !isset($_SESSION["prihlaseni"])){echo "Nejdřív se musíš přihlásit.";}   if (isset($_SESSION["prihlaseni"]) && isset($_GET["odhlasit"])) {session_unset(); session_destroy(); echo "Byl jsi odhlášen.";} ?><div id="formular"><form action="login.php" method="post"><table style="text-align:left; display:inline-block;"><tr><td>Nick: </td><td><input type="text" name="nick" <?php if(isset($_GET['registrace'])){echo 'value="'.$_GET["registrace"].'"';} ?> ></td></tr><tr><td>Heslo: </td><td><input type="password" name="heslo"></td></tr></table><br><input type="submit" value="Odeslat"></form><br>
+        <div style="text-align:center">
+		<?php if (isset($_GET["zprava"])) {echo '<div style="background-color:yellow;"><b>'.$_GET["zprava"]."</b></div><br>";} ?>
+		<?php session_start(); if(isset($_GET["id"]) && !isset($_SESSION["prihlaseni"])){echo "Nejdřív se musíš přihlásit.";}   if (isset($_SESSION["prihlaseni"]) && isset($_GET["odhlasit"])) {session_unset(); session_destroy(); echo "Byl jsi odhlášen.";} ?><div id="formular"><form action="login.php" method="post"><table style="text-align:left; display:inline-block;"><tr><td>Nick: </td><td><input type="text" name="nick" <?php if(isset($_GET['registrace'])){echo 'value="'.$_GET["registrace"].'"';} ?> ></td></tr><tr><td>Heslo: </td><td><input type="password" name="heslo"></td></tr></table><br><input type="submit" value="Odeslat"></form><br>
 <?php if(!isset($_GET['registrace'])){echo 'Ještě nemáš účet? <a href="registrace.php">Registrace.</a>';} ?>
 </div><br>
 		<?php
