@@ -15,7 +15,7 @@
 		ini_set('session.gc_maxlifetime',$trvanlivostRelace);
 		session_start();
 		if (isset($_SESSION['prihlaseni']) && isset($_SESSION['vypravec'])) {
-				echo '<a href="new.php" class="button boy">Nový room</a><br><br>';
+				echo '<a href="new.php" class="button blue">Nový room</a><br><br>';
 		}
 		
 		if (!isset($_SESSION['prihlaseni'])) {
