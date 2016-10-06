@@ -9,7 +9,7 @@
     </head>
     <body>
         <div style="text-align:center">
-		<?php if (isset($_GET["start"])) {echo '<div style="background-color:#90EE90;"><small><b>Vítejte v online hře Dračí doupě, kterou vytvořil Bajker006.<br>Nejprve se, prosím, přihlašte nebo zaregistrujte.</b></small></div><br>';} else{echo '<div style="text-align:left;"><small><a href="index.php">Zpět</a></small></div>';} ?>
+		<?php if (isset($_GET["start"])) {echo '<div style="background-color:#90EE90; color:white;"><small><b>Vítejte v online hře Dračí doupě, kterou vytvořil Bajker006.<br>Nejprve se, prosím, přihlašte nebo zaregistrujte.</b></small></div><br>';} else{echo '<div style="text-align:left;"><small><a href="index.php">Zpět</a></small></div>';} ?>
 		<?php session_start(); if(isset($_GET["id"]) && !isset($_SESSION["prihlaseni"])){echo "Nejdřív se musíš přihlásit.";}   if (isset($_SESSION["prihlaseni"]) && isset($_GET["odhlasit"])) {session_unset(); session_destroy(); echo "Byl jsi odhlášen.";} ?><div id="login"><form action="login.php" method="post"><table style="text-align:left; display:inline-block;"><tr><td>Nick: </td><td><input type="text" name="nick" <?php if(isset($_GET['registrace'])){echo 'value="'.$_GET["registrace"].'"';} ?> ></td></tr><tr><td>Heslo: </td><td><input type="password" name="heslo"></td></tr></table><br><input type="submit" class="button blue" value="Odeslat"></form><br>
 <?php if(!isset($_GET['registrace'])){echo 'Ještě nemáš účet? <a href="registrace.php">Registrace.</a>';} ?>
 </div><br>
