@@ -71,4 +71,67 @@ font-size: 1.5rem;
     border: 3px solid #555;
 }
 
-td {min-width:90px;}
+
+#registrace input[type=text] {
+    padding: 10px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+font-size: 1.5rem;
+}
+
+#registrace input[type=text]:focus {
+    border: 3px solid #555;
+}
+
+#registrace input[type=password] {
+    padding: 10px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+font-size: 1.5rem;
+}
+
+#registrace input[type=password]:focus {
+    border: 3px solid #555;
+}
+
+
+#novy-room input[type=text] {
+    padding: 10px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+font-size: 1.5rem;
+}
+
+#novy-room input[type=text]:focus {
+    border: 3px solid #555;
+}
+
+#novy-room input[type=password] {
+    padding: 10px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+font-size: 1.5rem;
+}
+
+#novy-room input[type=password]:focus {
+    border: 3px solid #555;
+}
+
+#login td {min-width:90px;}
+#registrace td {min-width:180px;}

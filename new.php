@@ -4,14 +4,16 @@
 	<meta name="robots" content="noindex, nofollow">
 	<meta charset="utf-8">
         <title>Nový room</title>
+		<link rel="stylesheet" href="style.css">
+		<link rel="icon" href="http://pre12.deviantart.net/b248/th/pre/f/2013/247/e/3/dragon_icon_by_ferocefv-d6krb7y.png" />
 		<?php
 		session_start();
 if (!isset($_SESSION["vypravec"])) {echo '<meta http-equiv="refresh" content="0;url=index.php">';}
 ?>
     </head>
     <body>
-	<a href="index.php">Zpět</a>
-        <div style="text-align:center"><form action="new.php" method="post"><table style="text-align:left; display:inline-block;"><tr><td>Název: </td><td><input type="text" name="nazev"></td></tr><tr><td>Tvůj nick (jaký chceš): </td><td><input type="text" name="owner" <?php if(isset($_SESSION['nick'])){echo 'value="'.$_SESSION["nick"].'"';} ?> ></td></tr></table><br><input type="submit" value="Odeslat"></form><br><br>
+	<small><a href="index.php">Zpět</a></small>
+        <div style="text-align:center"><div id="novy-room"><form action="new.php" method="post"><table style="text-align:left; display:inline-block;"><tr><td>Název: </td><td><input type="text" name="nazev"></td></tr><tr><td>Tvůj nick (jaký chceš): </td><td><input type="text" name="owner" <?php if(isset($_SESSION['nick'])){echo 'value="'.$_SESSION["nick"].'"';} ?> ></td></tr></table><br><input class="button blue" type="submit" value="Odeslat"></form></div><br><br>
 		<?php
 		require_once ("databaze.php");
 		if (isset($_SESSION["premiovy"])) {

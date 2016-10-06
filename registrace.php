@@ -4,9 +4,12 @@
 	<meta name="robots" content="noindex, nofollow">
 	<meta charset="utf-8">
         <title>Registrace</title>
+		<link rel="stylesheet" href="style.css">
+		<link rel="icon" href="http://pre12.deviantart.net/b248/th/pre/f/2013/247/e/3/dragon_icon_by_ferocefv-d6krb7y.png" />
     </head>
     <body>
-        <div style="text-align:center"><div id="formular"><form action="registrace.php" method="post"><table style="text-align:left; display:inline-block;"><tr><td>Nick: </td><td><input type="text" name="nick"></td></tr><tr><td>Heslo: </td><td><input type="password" name="heslo"></td></tr><tr><td>Heslo znovu:</td><td><input type="password" name="hesloznovu"></td></tr></table><br><input type="submit" value="Odeslat"></form><br></div><br>
+		<small><a href="login.php">Zpět na přihlášení</a></small>
+        <div style="text-align:center"><div id="registrace"><form action="registrace.php" method="post"><table style="text-align:left; display:inline-block;"><tr><td>Nick: </td><td><input type="text" name="nick"></td></tr><tr><td>Heslo: </td><td><input type="password" name="heslo"></td></tr><tr><td>Heslo znovu:</td><td><input type="password" name="hesloznovu"></td></tr></table><br><input class="button blue" type="submit" value="Odeslat"></form><br></div><br>
 		<?php
 		require_once("databaze.php");
 		session_start();
@@ -27,7 +30,7 @@
 				zapis("INSERT INTO hraci(nick, heslo) VALUES ('".$_POST["nick"]."', '".md5($_POST["heslo"])."')");
 				echo 'Výborně! <b><a href="login.php">Přihlásit se</a></b>';
 					echo '<meta http-equiv="refresh" content="1;url=login.php?registrace='.$_POST["nick"].'">';
-					echo '<style>#formular{display:none;}</style>';
+					echo '<style>#registrace{display:none;}</style>';
 				}
 			}
 			else {
