@@ -15,11 +15,11 @@
 		ini_set('session.gc_maxlifetime',$trvanlivostRelace);
 		session_start();
 		if (isset($_SESSION['prihlaseni']) && isset($_SESSION['vypravec'])) {
-				echo '<a href="new.php" class="button boy">Nový room</a><br><br>';
+				echo '<a href="new.php" class="button blue">Nový room</a><br><br>';
 		}
 		
 		if (!isset($_SESSION['prihlaseni'])) {
-				echo '<meta http-equiv="refresh" content="0;url=login.php">';
+				echo '<meta http-equiv="refresh" content="0;url=login.php?start">';
 		}
 		require_once("databaze.php");
 		$db = new PDO($dbset, $dbnick, $dbpass);

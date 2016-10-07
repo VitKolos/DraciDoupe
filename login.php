@@ -4,9 +4,13 @@
 	<meta name="robots" content="noindex, nofollow">
 	<meta charset="utf-8">
         <title>Přihlásit se</title>
+		<link rel="stylesheet" href="style.css">
+		<link rel="icon" href="http://pre12.deviantart.net/b248/th/pre/f/2013/247/e/3/dragon_icon_by_ferocefv-d6krb7y.png" />
     </head>
     <body>
-        <div style="text-align:center"><?php session_start(); if(isset($_GET["id"]) && !isset($_SESSION["prihlaseni"])){echo "Nejdřív se musíš přihlásit.";}   if (isset($_SESSION["prihlaseni"]) && isset($_GET["odhlasit"])) {session_unset(); session_destroy(); echo "Byl jsi odhlášen.";} ?><div id="formular"><form action="login.php" method="post"><table style="text-align:left; display:inline-block;"><tr><td>Nick: </td><td><input type="text" name="nick" <?php if(isset($_GET['registrace'])){echo 'value="'.$_GET["registrace"].'"';} ?> ></td></tr><tr><td>Heslo: </td><td><input type="password" name="heslo"></td></tr></table><br><input type="submit" value="Odeslat"></form><br>
+        <div style="text-align:center">
+		<?php if (isset($_GET["start"])) {echo '<div style="background-color:#90EE90; color:white;"><small><b>Vítejte v online hře Dračí doupě, kterou vytvořil Bajker006.<br>Nejprve se, prosím, přihlašte nebo zaregistrujte.</b></small></div><br>';} else{echo '<div style="text-align:left;"><small><a href="index.php">Zpět</a></small></div>';} ?>
+		<?php session_start(); if(isset($_GET["id"]) && !isset($_SESSION["prihlaseni"])){echo "Nejdřív se musíš přihlásit.";}   if (isset($_SESSION["prihlaseni"]) && isset($_GET["odhlasit"])) {session_unset(); session_destroy(); echo "Byl jsi odhlášen.";} ?><div id="login"><form action="login.php" method="post"><table style="text-align:left; display:inline-block;"><tr><td>Nick: </td><td><input type="text" name="nick" <?php if(isset($_GET['registrace'])){echo 'value="'.$_GET["registrace"].'"';} ?> ></td></tr><tr><td>Heslo: </td><td><input type="password" name="heslo"></td></tr></table><br><input type="submit" class="button blue" value="Odeslat"></form><br>
 <?php if(!isset($_GET['registrace'])){echo 'Ještě nemáš účet? <a href="registrace.php">Registrace.</a>';} ?>
 </div><br>
 		<?php
@@ -32,7 +36,7 @@
 					if ($premiovy != 0) {$_SESSION["premiovy"] = 1;}
 					echo 'Přihlášení proběhlo úspěšně! <b><a href="/">Jít domů.</a></b>';
 					echo '<meta http-equiv="refresh" content="1;url=index.php">';
-					echo '<style>#formular{display:none;}</style>';
+					echo '<style>#login{display:none;}</style>';
 			}
 			else {echo "Špatné heslo!";}
 		}
@@ -56,7 +60,7 @@
 					$dotaz->execute($parametry);
 					echo 'Výborně! <b><a href="/">Jít domů.</a></b>';
 					echo '<meta http-equiv="refresh" content="1;url=index.php">';
-					echo '<style>#formular{display:none;}</style>';
+					echo '<style>#login{display:none;}</style>';
 				}
 				else {echo "Špatné heslo vypravěče!";}
 			}

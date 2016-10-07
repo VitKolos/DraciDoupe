@@ -1,9 +1,9 @@
 body {
-	font: 3vw Calibri, sans-serif;
+	font: 2rem Calibri, sans-serif;
 }
 
 .button {
-	padding: 8px 3vw;
+	padding: 8px 20px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
@@ -33,27 +33,122 @@ body {
 	border: 2px solid red;
 }
 
-.boy {
+.blue {
 	background-color: #82e9ff;
-	font-size: 3vw;
+	font-size: 2rem;
 	border: 2px solid #82e9ff;
 }
 
-.girl {
-	background-color: pink;
-	font-size: 20px;
-	border: 2px solid pink;
+/*buttons end*/
+
+#login input[type=text] {
+    padding: 10px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+font-size: 1.5rem;
 }
 
-.start {
-	padding: 16px 32px;
-	background-color: #4CAF50;
-	font-size: 50px;
-	border: 2px solid #4CAF50;
+#login input[type=text]:focus {
+    border: 3px solid #555;
 }
 
-.vol {
-	background-color: #00277a;
-	font-size: 20px;
-	border: 2px solid #00277a;
+#login input[type=password] {
+    padding: 10px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+font-size: 1.5rem;
+}
+
+#login input[type=password]:focus {
+    border: 3px solid #555;
+}
+
+
+#registrace input[type=text] {
+    padding: 10px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+font-size: 1.5rem;
+}
+
+#registrace input[type=text]:focus {
+    border: 3px solid #555;
+}
+
+#registrace input[type=password] {
+    padding: 10px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+font-size: 1.5rem;
+}
+
+#registrace input[type=password]:focus {
+    border: 3px solid #555;
+}
+
+
+#novy-room input[type=text] {
+    padding: 10px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+font-size: 1.5rem;
+}
+
+#novy-room input[type=text]:focus {
+    border: 3px solid #555;
+}
+
+#novy-room input[type=password] {
+    padding: 10px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+font-size: 1.5rem;
+}
+
+#novy-room input[type=password]:focus {
+    border: 3px solid #555;
+}
+
+#login td {min-width:90px;}
+#registrace td {min-width:180px;}
+
+
+#owner table, #owner th, #owner td {
+	border: 3px solid #e5e5e5;
+}
+#owner #info{
+	font-weight: 1000;
+}
+#owner #chat .$ja{
+	text-transform: uppercase;
+}
+#owner #chat .owner{
+	font-weight: bold;
+}
+#owner th, #owner td {
+    padding: 5px 10px 5px 10px;
 }
