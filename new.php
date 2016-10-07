@@ -34,8 +34,8 @@ if (!isset($_SESSION["vypravec"])) {echo '<meta http-equiv="refresh" content="0;
 				$roomid = $vystup['id'];
 			}
 			$_SESSION["owner"] = $roomid;
-			zapis('CREATE TABLE `bajker006.wz7970`.`room'.$roomid.'` ( `id` INT NOT NULL AUTO_INCREMENT , `jmeno` TEXT CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL , `pohlavi` TEXT CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL , `penize` INT NOT NULL , `cp` INT NOT NULL , `hp` INT NOT NULL, PRIMARY KEY (id) ) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_czech_ci');
-			zapis('CREATE TABLE `bajker006.wz7970`.`roomchat'.$roomid.'` ( `id` INT NOT NULL AUTO_INCREMENT , `autor` int(11) NOT NULL , `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP , `text` text CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL , PRIMARY KEY (id) ) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_czech_ci');
+			zapis('CREATE TABLE `'.$dbname.'`.`room'.$roomid.'` ( `id` INT NOT NULL AUTO_INCREMENT , `jmeno` TEXT CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL , `pohlavi` TEXT CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL , `penize` INT NOT NULL , `cp` INT NOT NULL , `hp` INT NOT NULL, PRIMARY KEY (id) ) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_czech_ci');
+			zapis('CREATE TABLE `'.$dbname.'`.`roomchat'.$roomid.'` ( `id` INT NOT NULL AUTO_INCREMENT , `autor` int(11) NOT NULL , `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP , `text` text CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL , PRIMARY KEY (id) ) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_czech_ci');
 			echo 'Hotovo!<meta http-equiv="refresh" content="1;url=room.php?id='.$roomid.'">';
 		}
 		?>

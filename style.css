@@ -135,3 +135,20 @@ font-size: 1.5rem;
 
 #login td {min-width:90px;}
 #registrace td {min-width:180px;}
+
+
+#owner table, #owner th, #owner td {
+	border: 3px solid #e5e5e5;
+}
+#owner #info{
+	font-weight: 1000;
+}
+#owner #chat .$ja{
+	text-transform: uppercase;
+}
+#owner #chat .owner{
+	font-weight: bold;
+}
+#owner th, #owner td {
+    padding: 5px 10px 5px 10px;
+}

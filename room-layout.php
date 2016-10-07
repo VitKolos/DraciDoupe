@@ -9,24 +9,7 @@
     </head>
     <body style="-webkit-transition-duration: 0.5s; transition-duration: 0.5s;">
         <br>
-		<style>
-		table, th, td {
-			border: 3px solid #e5e5e5;
-		}
-		body {
-			font-size: 150%;
-		}
-		#info{
-			font-weight: 1000;
-		}
-		#chat .$ja{
-			text-transform: uppercase;
-		}
-		#chat .owner{
-			font-weight: bold;
-		}
-		</style>
-		<div style="text-align:center;">
+		<div style="text-align:center;" id="owner">
 		<div style="display:inline-block; text-align:left; width:95%; height:90%;">
 		<table style="width:100%; border-collapse: collapse; text-align:left; height:100%;">
 		<tr><td><div id="info"></div></td></tr>
