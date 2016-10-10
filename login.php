@@ -15,7 +15,7 @@
 </div><br>
 		<?php
 		require_once("databaze.php");
-		if (isset($_SESSION["prihlaseni"]) && !isset($_GET["id"]) && !isset($_GET["heslo"]) && !isset($_GET["odhlasit"])) {echo '<meta http-equiv="refresh" content="0;url=index.php">';}
+		if (isset($_SESSION["prihlaseni"]) && !isset($_GET["id"]) && !isset($_GET["heslo"]) && !isset($_GET["odhlasit"])) {header("Location: index.php"); exit;}
 		if (!isset($_SESSION["prihlaseni"]) && isset($_POST["nick"]) && isset($_POST["heslo"])){
 			$db = new PDO($dbset, $dbnick, $dbpass);
 			$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

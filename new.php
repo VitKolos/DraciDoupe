@@ -8,7 +8,7 @@
 		<link rel="icon" href="http://pre12.deviantart.net/b248/th/pre/f/2013/247/e/3/dragon_icon_by_ferocefv-d6krb7y.png" />
 		<?php
 		session_start();
-if (!isset($_SESSION["vypravec"])) {echo '<meta http-equiv="refresh" content="0;url=index.php">';}
+if (!isset($_SESSION["vypravec"])) {header("Location: index.php"); exit;}
 ?>
     </head>
     <body>

@@ -1,4 +1,17 @@
 <?php
+$trvanlivostRelace = 60*60*24;
+ini_set('session.gc_maxlifetime',$trvanlivostRelace);
+session_start();
+
+//kick out
+
+if (!isset($_GET["id"]) || !isset($_SESSION["prihlaseni"])) {
+	header("Location: index.php");
+	exit;
+}
+
+//kick out end
+
 	if (isset($_GET["id"])) {
 	require_once("databaze.php");
 	$db = new PDO($dbset, $dbnick, $dbpass);
@@ -25,24 +38,23 @@
     <head> 
 		<meta name="robots" content="noindex, nofollow">
 		<meta charset="utf-8">
-		<?php if (isset($_GET["id"])) {echo "<title>".$nazev."</title>";} else{echo '<meta http-equiv="refresh" content="0;url=new.php">';} ?>
+		<?php if (isset($_GET["id"])) {echo "<title>".$nazev."</title>";} ?>
 		<link rel="icon" href="http://pre12.deviantart.net/b248/th/pre/f/2013/247/e/3/dragon_icon_by_ferocefv-d6krb7y.png" />
 		<link rel="stylesheet" href="style.css">
     </head>
     <body style="-webkit-transition-duration: 0.5s; transition-duration: 0.5s;">
         <div style="text-align:center"><br><div style="height:75vh">
 			<?php
-			$trvanlivostRelace = 60*60*24;
-			ini_set('session.gc_maxlifetime',$trvanlivostRelace);
-			session_start();
-				if (!isset($_SESSION["prihlaseni"])){echo '<meta http-equiv="refresh" content="0;url=login.php">';}
+
+
 				if (isset($_GET["id"])) {
 					$allowedtime = $zalozeno + 24 * 60 * 60;
 					if (time() > $allowedtime) {
 						zapis("DROP TABLE `room".$id."`");
 						zapis("DROP TABLE `roomchat".$id."`");
 						zapis("DELETE FROM rooms WHERE id='".$id."'");
-						echo '<meta http-equiv="refresh" content="0;url=index.php">';
+						header("Location: index.php");
+						exit;
 					}
 					if (isset($_SESSION["owner"]) && $_SESSION["owner"] == $id) {
 						//u ownera

@@ -13,7 +13,7 @@
 		<?php
 		require_once("databaze.php");
 		session_start();
-		if (isset($_SESSION["prihlaseni"])) {echo '<meta http-equiv="refresh" content="0;url=index.php">';}
+		if (isset($_SESSION["prihlaseni"])) {header("Location: index.php"); exit;}
 		if(isset($_POST["nick"]) && isset($_POST["heslo"]) && isset($_POST["hesloznovu"])){
 			if($_POST["heslo"] == $_POST["hesloznovu"]) {
 			$db = new PDO($dbset, $dbnick, $dbpass);

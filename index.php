@@ -19,7 +19,8 @@
 		}
 		
 		if (!isset($_SESSION['prihlaseni'])) {
-				echo '<meta http-equiv="refresh" content="0;url=login.php?start">';
+			header("Location: login.php?start");
+			exit;
 		}
 		require_once("databaze.php");
 		$db = new PDO($dbset, $dbnick, $dbpass);
