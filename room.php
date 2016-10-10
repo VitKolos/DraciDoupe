@@ -3,14 +3,12 @@ $trvanlivostRelace = 60*60*24;
 ini_set('session.gc_maxlifetime',$trvanlivostRelace);
 session_start();
 
-//kick out
+//kick out + databaze is getting data BEGIN
 
 if (!isset($_GET["id"]) || !isset($_SESSION["prihlaseni"])) {
 	header("Location: index.php");
 	exit;
 }
-
-//kick out end
 
 	if (isset($_GET["id"])) {
 	require_once("databaze.php");
@@ -32,6 +30,13 @@ if (!isset($_GET["id"]) || !isset($_SESSION["prihlaseni"])) {
 		$maxhraci = $vystup["maxhraci"];
 	}
 	}
+	
+if (!isset($nazev)) {
+	header("Location: index.php");
+	exit;
+}
+
+//kick out + databaze is getting data END
 ?>
 <!doctype html>
 <html>
