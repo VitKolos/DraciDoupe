@@ -24,7 +24,7 @@ if (!isset($_SESSION["vypravec"])) {header("Location: index.php"); exit;}
 		}
 		if (isset($_POST['nazev']) && isset($_POST['owner'])) {
 			$_SESSION["nick"] = $_POST['owner'];
-			zapis ("INSERT INTO rooms(nazev, vypravec, zalozeno, cas, hraci, maxhraci) VALUES ('".$_POST['nazev']."', '".$_POST['owner']."', ".time().", 10, 1, ".$maxhraci.")");
+			zapis ("INSERT INTO rooms(nazev, vypravec, idvypravece, zalozeno, aktivita, cas, hraci, maxhraci) VALUES ('".$_POST['nazev']."', '".$_POST['owner']."', '".$_SESSION['prihlaseni']."', ".time().", ".time().", 10, 0, ".$maxhraci.")");
 			$db = new PDO($dbset, $dbnick, $dbpass);
 			$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$parametry = array();

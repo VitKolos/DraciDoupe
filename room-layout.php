@@ -9,7 +9,7 @@
     </head>
     <body style="-webkit-transition-duration: 0.5s; transition-duration: 0.5s;">
         <br>
-		<div style="text-align:center;" id="owner">
+		<div style="text-align:center;" id="room">
 		<div style="display:inline-block; text-align:left; width:95%; height:90%;">
 		<table style="width:100%; border-collapse: collapse; text-align:left; height:100%;">
 		<tr><td><div id="info"></div></td></tr>
