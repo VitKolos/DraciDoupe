@@ -74,17 +74,52 @@ if (!isset($nazev)) {
 						
 						
 						
+						echo '
+						<div style="text-align:center;" id="room">
+						<div style="display:inline-block; text-align:left; width:95%; height:90%;">
+						<table style="width:100%; border-collapse: collapse; text-align:left; height:100%;">
+						<tr><td><div id="info"></div></td></tr>
+						<tr><td><div id="chat"></div></td></tr>
+						<tr><td style="border-bottom: none; vertical-align:center;"><form action="room.php" method="get">Zpráva:<br><textarea name="zprava" rows="1" style="width:99%; height:20px;">';
+						if(isset($_GET["zprava"])) {echo $_GET["zprava"];}
+						echo '</textarea></td></tr>
+						<tr><td style="border-top: none; text-align:center;"><input type="submit" value="Odeslat"></form></td></tr>
+						</table>
+						</div>
+						</div>
+<script>
+function info() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("info").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "rinfo.php?id='.$id.'", true);
+  xhttp.send();
+}
+setInterval(info, 1000);
+
+function chat() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("chat").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "rchat.php?id='.$id.'", true);
+  xhttp.send();
+}
+setInterval(chat, 1000);
+</script>
+						';
 						
 						
 						
-						
-						
-						echo '<a href="room.php?id='.$id.'&quit">Opustit room</a><br>';
-						echo '<a href="room.php?id='.$id.'&quit&odhlasit">Opustit room a odhlásit se</a>';
 						if (isset($_GET["quit"]) && !isset($_GET["odhlasit"])) {
 							zapis("DELETE FROM room".$id." WHERE jmeno='".$_SESSION["nick"]."'");
 							unset($_SESSION['hrac']);
-							echo "<br>Room byl opuštěn.";
+							echo "<br>Room byl opuštěn.<style>#room{display:none;}</style>";
 							$akthraci = $hraci;
 							$akthraci--;
 							zapis('UPDATE `rooms` SET `hraci`='.$akthraci.' WHERE id = '.$id);
@@ -93,7 +128,7 @@ if (!isset($nazev)) {
 						if (isset($_GET["quit"]) && isset($_GET["odhlasit"])) {
 							zapis("DELETE FROM room".$id." WHERE jmeno='".$_SESSION["nick"]."'");
 							unset($_SESSION['hrac']);
-							echo "<br>Room byl opuštěn.";
+							echo "<br>Room byl opuštěn.<style>#room{display:none;}</style>";
 							$akthraci = $hraci;
 							$akthraci--;
 							zapis('UPDATE `rooms` SET `hraci`='.$akthraci.' WHERE id = '.$id);

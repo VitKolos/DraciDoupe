@@ -2,7 +2,7 @@
 
 //kick out + databaze is getting data BEGIN
 
-if (!isset($_GET["id"]) || !isset($_SESSION["prihlaseni"]) || isset($_SESSION["hrac"]) || isset($_SESSION["owner"])) {
+if (!isset($_GET["id"]) || !isset($_SESSION["prihlaseni"])) {
 	header("Location: index.php");
 	exit;
 }

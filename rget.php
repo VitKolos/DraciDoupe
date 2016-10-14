@@ -2,13 +2,11 @@
 error_reporting(0);
 	if (isset($_GET["id"])) {
 		
-	/*$pos = strpos($_SERVER['HTTP_REFERER'],getenv('HTTP_HOST'));
+	$pos = strpos($_SERVER['HTTP_REFERER'],getenv('HTTP_HOST'));
 	if($pos===false) {
 	header("Location: index.php");
 	exit;}
 	
-	else {*/
-
 	require_once("databaze.php");
 	$db = new PDO($dbset, $dbnick, $dbpass);
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -22,15 +20,16 @@ error_reporting(0);
 		$id = $vystup["id"];
 		$nazev = $vystup["nazev"];
 		$vypravec = $vystup["vypravec"];
-		$idvypravece = $vystup["idvypravece"];
 		$zalozeno = $vystup["zalozeno"];
-		$aktivita = $vystup["aktivita"];
 		$cas = $vystup["cas"];
 		$hraci = $vystup["hraci"];
 		$maxhraci = $vystup["maxhraci"];
 	}
-	echo '<div id="body">Chat</div>'.$id;
-	//}
+	
+	if (isset($_GET["time"])) {
+		echo $cas;
+	}
+
 	
 	}
 	
@@ -38,4 +37,5 @@ error_reporting(0);
 		header("Location: index.php");
 		exit;
 	}
+
 ?>

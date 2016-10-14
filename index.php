@@ -35,7 +35,7 @@
 		for ($i = 0; $vystup = $dotaz->fetch(); $i++) {
 			echo '<tr><td><a ';
 			if ($vystup['hraci'] < $vystup['maxhraci']) {echo 'href="room.php?id=' . $vystup['id'] . '"';}
-			echo 'class="button yes">' . $vystup['nazev'] . '</a> </td><td>Vypravěč: '.$vystup['vypravec'].' </td><td>Počet hráčů: '.$vystup['hraci'].'/'.$vystup['maxhraci'].'</td></tr>';
+			echo 'class="button yes">' . htmlspecialchars($vystup['nazev']) . '</a> </td><td>Vypravěč: '.htmlspecialchars($vystup['vypravec']).' </td><td>Počet hráčů: '.$vystup['hraci'].'/'.$vystup['maxhraci'].'</td></tr>';
 			$someroom = $vystup['id'];
 		}
 		$fp = fopen('notification.txt', 'r');
