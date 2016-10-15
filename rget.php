@@ -29,6 +29,10 @@ error_reporting(0);
 	if (isset($_GET["time"])) {
 		echo $cas;
 	}
+	
+	if (isset($_GET["players"])) {
+		echo $hraci."/".$maxhraci;
+	}
 
 	
 	}

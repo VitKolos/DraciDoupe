@@ -151,22 +151,22 @@ function barva() {
 		break;
 		
 		case 4:
-		document.body.style.backgroundColor = "#555555";
+		document.body.style.backgroundColor = "#333333";
 		document.body.style.color = "#ffffff";
 		break;
 		
 		case 5:
-		document.body.style.backgroundColor = "#555555";
+		document.body.style.backgroundColor = "#666666";
 		document.body.style.color = "#ffffff";
 		break;
 		
 		case 6:
-		document.body.style.backgroundColor = "#AAAAAA";
+		document.body.style.backgroundColor = "#999999";
 		document.body.style.color = "#000000";
 		break;
 		
 		case 7:
-		document.body.style.backgroundColor = "#AAAAAA";
+		document.body.style.backgroundColor = "#CCCCCC";
 		document.body.style.color = "#000000";
 		break;
 		
@@ -211,27 +211,27 @@ function barva() {
 		break;
 		
 		case 16:
-		document.body.style.backgroundColor = "#AAAAAA";
+		document.body.style.backgroundColor = "#ffffff";
 		document.body.style.color = "#000000";
 		break;
 		
 		case 17:
-		document.body.style.backgroundColor = "#AAAAAA";
+		document.body.style.backgroundColor = "#CCCCCC";
 		document.body.style.color = "#000000";
 		break;
 		
 		case 18:
-		document.body.style.backgroundColor = "#555555";
+		document.body.style.backgroundColor = "#999999";
 		document.body.style.color = "#ffffff";
 		break;
 		
 		case 19:
-		document.body.style.backgroundColor = "#555555";
+		document.body.style.backgroundColor = "#666666";
 		document.body.style.color = "#ffffff";
 		break;
 		
 		case 20:
-		document.body.style.backgroundColor = "#000000";
+		document.body.style.backgroundColor = "#333333";
 		document.body.style.color = "#ffffff";
 		break;
 		
@@ -264,6 +264,17 @@ function barva() {
 }
 setInterval(barva, 1000);
 
+function title() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.title = "'.$nazev.' – " + this.responseText;
+    }
+  };
+  xhttp.open("GET", "rget.php?id='.$id.'&players", true);
+  xhttp.send();
+}
+setInterval(title, 1000);
 
 </script>
 						';
@@ -274,7 +285,7 @@ setInterval(barva, 1000);
 								zapis("UPDATE `rooms` SET `cas` = '".$_GET["cas"]."' WHERE `id` = ".$id);
 								
 								if ($_GET["zprava"] != "") {
-									
+									/*zapis("INSERT INTO `roomchat5`(`autor`, `text`) VALUES ('".$."', '".$_GET["zprava"]."')");*/
 								}
 							}
 							

@@ -77,9 +77,9 @@ if (!isset($nazev)) {
 						echo '
 						<div style="text-align:center;" id="room">
 						<div style="display:inline-block; text-align:left; width:95%; height:90%;">
-						<table style="width:100%; border-collapse: collapse; text-align:left; height:100%;">
-						<tr><td><div id="info"></div></td></tr>
-						<tr><td><div id="chat"></div></td></tr>
+						<table style="width:100%; border-collapse: collapse; text-align:left; height:100%; background-color:white; color:black;">
+						<tr><td><div id="info"><div style="text-align:center;"><svg width="40px" height="40px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-default"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(0 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(30 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.08333333333333333s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(60 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.16666666666666666s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(90 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.25s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(120 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.3333333333333333s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(150 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.4166666666666667s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(180 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.5s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(210 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.5833333333333334s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(240 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.6666666666666666s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(270 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.75s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(300 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.8333333333333334s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(330 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.9166666666666666s" repeatCount="indefinite"/></rect></svg></div></div></td></tr>
+						<tr><td><div id="chat"><div style="text-align:center;"><svg width="40px" height="40px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-default"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(0 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(30 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.08333333333333333s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(60 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.16666666666666666s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(90 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.25s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(120 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.3333333333333333s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(150 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.4166666666666667s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(180 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.5s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(210 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.5833333333333334s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(240 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.6666666666666666s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(270 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.75s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(300 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.8333333333333334s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(330 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.9166666666666666s" repeatCount="indefinite"/></rect></svg></div></div></td></tr>
 						<tr><td style="border-bottom: none; vertical-align:center;"><form action="room.php" method="get">Zpráva:<br><textarea name="zprava" rows="1" style="width:99%; height:20px;">';
 						if(isset($_GET["zprava"])) {echo $_GET["zprava"];}
 						echo '</textarea></td></tr>
@@ -111,6 +111,161 @@ function chat() {
   xhttp.send();
 }
 setInterval(chat, 1000);
+
+function barva() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+		var cas = this.responseText;
+		cas = Number(cas);
+		switch (cas) {
+			
+		case 0:
+		document.body.style.backgroundColor = "#000000";
+		document.body.style.color = "#ffffff";
+		break;
+		
+		case 1:
+		document.body.style.backgroundColor = "#000000";
+		document.body.style.color = "#ffffff";
+		break;
+		
+		case 2:
+		document.body.style.backgroundColor = "#000000";
+		document.body.style.color = "#ffffff";
+		break;
+		
+		case 3:
+		document.body.style.backgroundColor = "#000000";
+		document.body.style.color = "#ffffff";
+		break;
+		
+		case 4:
+		document.body.style.backgroundColor = "#333333";
+		document.body.style.color = "#ffffff";
+		break;
+		
+		case 5:
+		document.body.style.backgroundColor = "#666666";
+		document.body.style.color = "#ffffff";
+		break;
+		
+		case 6:
+		document.body.style.backgroundColor = "#999999";
+		document.body.style.color = "#000000";
+		break;
+		
+		case 7:
+		document.body.style.backgroundColor = "#CCCCCC";
+		document.body.style.color = "#000000";
+		break;
+		
+		case 8:
+		document.body.style.backgroundColor = "#ffffff";
+		document.body.style.color = "#000000";
+		break;
+		
+		case 9:
+		document.body.style.backgroundColor = "#ffffff";
+		document.body.style.color = "#000000";
+		break;
+		
+		case 10:
+		document.body.style.backgroundColor = "#ffffff";
+		document.body.style.color = "#000000";
+		break;
+		
+		case 11:
+		document.body.style.backgroundColor = "#ffffff";
+		document.body.style.color = "#000000";
+		break;
+		
+		case 12:
+		document.body.style.backgroundColor = "#ffffff";
+		document.body.style.color = "#000000";
+		break;
+		
+		case 13:
+		document.body.style.backgroundColor = "#ffffff";
+		document.body.style.color = "#000000";
+		break;
+		
+		case 14:
+		document.body.style.backgroundColor = "#ffffff";
+		document.body.style.color = "#000000";
+		break;
+		
+		case 15:
+		document.body.style.backgroundColor = "#ffffff";
+		document.body.style.color = "#000000";
+		break;
+		
+		case 16:
+		document.body.style.backgroundColor = "#ffffff";
+		document.body.style.color = "#000000";
+		break;
+		
+		case 17:
+		document.body.style.backgroundColor = "#CCCCCC";
+		document.body.style.color = "#000000";
+		break;
+		
+		case 18:
+		document.body.style.backgroundColor = "#999999";
+		document.body.style.color = "#ffffff";
+		break;
+		
+		case 19:
+		document.body.style.backgroundColor = "#666666";
+		document.body.style.color = "#ffffff";
+		break;
+		
+		case 20:
+		document.body.style.backgroundColor = "#333333";
+		document.body.style.color = "#ffffff";
+		break;
+		
+		case 21:
+		document.body.style.backgroundColor = "#000000";
+		document.body.style.color = "#ffffff";
+		break;
+		
+		case 22:
+		document.body.style.backgroundColor = "#000000";
+		document.body.style.color = "#ffffff";
+		break;
+		
+		case 23:
+		document.body.style.backgroundColor = "#000000";
+		document.body.style.color = "#ffffff";
+		break;
+		
+		case 24:
+		document.body.style.backgroundColor = "#000000";
+		document.body.style.color = "#ffffff";
+		break;
+		
+
+		}
+    }
+  };
+  xhttp.open("GET", "rget.php?id='.$id.'&time", true);
+  xhttp.send();
+}
+setInterval(barva, 1000);
+
+function title() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.title = "'.$nazev.' – " + this.responseText;
+    }
+  };
+  xhttp.open("GET", "rget.php?id='.$id.'&players", true);
+  xhttp.send();
+}
+setInterval(title, 1000);
+
 </script>
 						';
 						

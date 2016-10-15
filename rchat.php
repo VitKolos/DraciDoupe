@@ -29,7 +29,7 @@ error_reporting(0);
 		$hraci = $vystup["hraci"];
 		$maxhraci = $vystup["maxhraci"];
 	}
-	echo '<div id="body">Chat</div>'.$id;
+	echo 'Chat'.$id;
 	//}
 	
 	}

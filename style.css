@@ -167,3 +167,14 @@ font-size: 1.5rem;
 #room th, #room td {
     padding: 5px 10px 5px 10px;
 }
+#room input {
+font-size: 1.5rem;
+}
+#room textarea {
+	padding: 1px;
+    height: 500px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+	/*resize: none;*/
+}
