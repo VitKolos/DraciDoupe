@@ -1,7 +1,6 @@
 <!doctype html>
 <html>
     <head>
-		<meta name="robots" content="noindex, nofollow">
 		<meta charset="utf-8">
 		<title>Bajkerovo dračí doupě</title>
 		<link rel="stylesheet" href="style.css">

@@ -92,6 +92,15 @@ if (!isset($nazev)) {
 							echo "Odesláno!";
 							$_SESSION["hrac"] = $id;
 							zapis("INSERT INTO `room".$id."`(`jmeno`, `pohlavi`, `penize`, `cp`, `hp`) VALUES ('".$_POST["nick"]."', '".$_POST["pohlavi"]."', 100, 10, 1000)");
+							
+							$dotaz3="";
+							$vystup3="";
+							$dotaz3 = $db->prepare("SELECT * FROM room".$_GET["id"]." WHERE jmeno='".$_POST["nick"]."'");
+							$dotaz3->execute($parametry);
+							for ($i = 0; $vystup3 = $dotaz3->fetch(); $i++) {
+								$_SESSION["idhrace"] = $vystup3["id"];
+							}
+							
 							echo '<meta http-equiv="refresh" content="1;url=room.php?id='.$id.'">';
 							}
 						}
