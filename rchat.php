@@ -1,6 +1,6 @@
 <?php
-error_reporting(0);
-	if (isset($_GET["id"])) {
+/*error_reporting(0);*/
+	if (isset($_GET["id"]) && isset($_GET["hrac"])) {
 		
 	/*$pos = strpos($_SERVER['HTTP_REFERER'],getenv('HTTP_HOST'));
 	if($pos===false) {
@@ -29,7 +29,22 @@ error_reporting(0);
 		$hraci = $vystup["hraci"];
 		$maxhraci = $vystup["maxhraci"];
 	}
-	echo 'Chat'.$id;
+	
+	$dotaz="";
+	$vystup="";
+	$dotaz = $db->prepare("SELECT * FROM roomchat".$id." ORDER BY id ASC");
+	$dotaz->execute($parametry);
+	$chat = array();
+	for ($i = 0; $vystup = $dotaz->fetch(); $i++) {
+		$chat[] = array(
+          'autor' => $vystup['autor'],
+          'cas' => $vystup['timestamp'],
+          'text' => $vystup['text'],
+        );
+	}
+	$idhrace = $_GET["hrac"];
+	require_once ("rchat-vypis.php");
+	
 	//}
 	
 	}

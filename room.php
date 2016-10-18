@@ -45,6 +45,11 @@ else if (isset($_SESSION["owner"]) && $_SESSION["owner"] == $_GET["id"]) {
 	$req = "vypravec.php";
 	require_once($req);
 }
+else if ($_SESSION["prihlaseni"] == $idvypravece) {
+	$_SESSION["owner"] = $_GET["id"];
+	header("Location: room.php?id=".$_GET["id"]);
+	exit;
+}
 else {
 	$req = "roomlog.php";
 	require_once($req);

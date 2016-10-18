@@ -35,6 +35,22 @@ error_reporting(0);
 		if ($vystup2["pohlavi"]=="muz") {$barva = "blue";}
 		if ($vystup2["pohlavi"]=="zena") {$barva = "red";}
 			echo '<div style="color:white; display:inline-block; background-color:'.$barva.'";>'.htmlspecialchars($vystup2["jmeno"]).'</div>';
+			echo ' – peníze: <div style="display:inline;" onclick="editpenize'.$vystup2["id"].'()">['.$vystup2["penize"].']</div>, útok: <div style="display:inline;" onclick="editcp'.$vystup2["id"].'()">['.$vystup2["cp"].']</div>, zdraví: <div style="display:inline;" onclick="edithp'.$vystup2["id"].'()">['.$vystup2["hp"].']</div>';
+			echo '
+			<script>
+			function editpenize'.$vystup2["id"].'() {
+				var x = prompt("Ahoj","Ano");
+			}
+			
+			function editcp'.$vystup2["id"].'() {
+				
+			}
+			
+			function edithp'.$vystup2["id"].'() {
+				
+			}
+			</script>
+			';
 			echo "<br>";
 			$nejacihraci=true;
 	}

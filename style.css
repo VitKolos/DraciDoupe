@@ -158,7 +158,7 @@ font-size: 1.5rem;
 #room #info{
 	font-weight: 1000;
 }
-#room #chat .$ja{
+#room #chat .ja{
 	text-transform: uppercase;
 }
 #room #chat .owner{
@@ -170,11 +170,11 @@ font-size: 1.5rem;
 #room input {
 font-size: 1.5rem;
 }
-#room textarea {
-	padding: 1px;
+#room #text {
+	padding: 5px;
     height: 500px;
     border: 2px solid #ccc;
     border-radius: 4px;
     background-color: #f8f8f8;
-	/*resize: none;*/
+	font-size: 1rem;
 }
