@@ -30,4 +30,23 @@ if ($pos !== false && isset($_POST["id"])) {
 		zapis("INSERT INTO `roomchat".$_POST["id"]."`(`autor`, `text`) VALUES ('".$_POST["autor"]."', '".$_POST["zprava"]."')");
 	}
 }
+if ($pos !== false && isset($_GET["id"])) {
+	if (isset($_GET["edit"]) && isset($_GET["hrac"]) && isset($_GET["typ"]) && isset($_GET["hodnota"])) {
+		zapis("UPDATE `room".$_GET["id"]."` SET `".$_GET["typ"]."` = '".$_GET["hodnota"]."' WHERE `id` = ".$_GET["hrac"]);
+		
+		$db = new PDO($dbset, $dbnick, $dbpass);
+		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$parametry = array();
+		$dotaz="";
+		$vystup="";
+		$dotaz = $db->prepare("SELECT * FROM room".$_GET["id"]." WHERE id=".$_GET["hrac"]);
+		$dotaz->execute($parametry);
+		for ($i = 0; $vystup = $dotaz->fetch(); $i++) {
+			$jmenohrace = $vystup["jmeno"];
+		}
+		
+		zapis("INSERT INTO `roomchat".$_GET["id"]."`(`autor`, `text`) VALUES ('0', ' ### [".$jmenohrace.": ".$_GET["typ"]." = ".$_GET["hodnota"]."]')");
+	}
+}
+
 ?>

@@ -5,7 +5,7 @@ session_start();
 
 //kick out + databaze is getting data BEGIN
 
-	if (isset($_GET["id"])) {
+	if (!empty($_GET["id"])) {
 	require_once("databaze.php");
 	$db = new PDO($dbset, $dbnick, $dbpass);
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

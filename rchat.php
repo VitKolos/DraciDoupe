@@ -29,7 +29,7 @@
 		$hraci = $vystup["hraci"];
 		$maxhraci = $vystup["maxhraci"];
 	}
-	
+	$jezprava=false;
 	$dotaz="";
 	$vystup="";
 	$dotaz = $db->prepare("SELECT * FROM roomchat".$id." ORDER BY id ASC");
@@ -41,9 +41,14 @@
           'cas' => $vystup['timestamp'],
           'text' => $vystup['text'],
         );
+		$jezprava=true;
 	}
 	$idhrace = $_GET["hrac"];
 	require_once ("rchat-vypis.php");
+	
+	if (!$jezprava) {
+		echo '<small style="color:grey;">Něco napiš! :)</small>';
+	}
 	
 	//}
 	
