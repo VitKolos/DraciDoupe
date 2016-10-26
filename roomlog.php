@@ -46,7 +46,7 @@ if (!isset($nazev)) {
 		<link rel="icon" href="http://pre12.deviantart.net/b248/th/pre/f/2013/247/e/3/dragon_icon_by_ferocefv-d6krb7y.png" />
 		<link rel="stylesheet" href="style.css">
     </head>
-    <body style="-webkit-transition-duration: 0.5s; transition-duration: 0.5s;">
+    <body style="-webkit-transition-duration: 0.5s; transition-duration: 0.5s;"><small id="zpet"><a href="index.php">Zpět</a></small>
         <div style="text-align:center"><br><div style="height:75vh">
 			<?php
 				if (isset($_GET["id"])) {
@@ -68,6 +68,7 @@ if (!isset($nazev)) {
 					}
 						//u nezaregistrovaného hráče
 						if (isset($_POST["nick"]) && isset($_POST["pohlavi"])) {
+							echo '<style>#zpet{display:none;}</style>';
 							$db = new PDO($dbset, $dbnick, $dbpass);
 							$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 							$parametry = array();
@@ -83,6 +84,7 @@ if (!isset($nazev)) {
 								if($vystup2["vypravec"] == $_POST["nick"]){$enemy = true;}
 							}
 							if ($enemy) {echo "Chyba: Tento nick je už zvolen někým jiným."; echo '<meta http-equiv="refresh" content="1;url=room.php?id='.$id.'">';}
+							else if (isset($_SESSION['forbidden']) && strpos($_SESSION['forbidden'], $id) !== false){echo "Chyba: Do tohoto roomu máš zakázaný přístup."; echo '<meta http-equiv="refresh" content="1;url=room.php?id='.$id.'">';}
 							else {
 							$_SESSION["nick"] = $_POST["nick"];
 							$_SESSION["pohlavi"] = $_POST["pohlavi"];

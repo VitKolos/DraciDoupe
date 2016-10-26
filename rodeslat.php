@@ -48,5 +48,10 @@ if ($pos !== false && isset($_GET["id"])) {
 		zapis("INSERT INTO `roomchat".$_GET["id"]."`(`autor`, `text`) VALUES ('0', ' ### [".$jmenohrace.": ".$_GET["typ"]." = ".$_GET["hodnota"]."]')");
 	}
 }
+if ($pos !== false && isset($_GET["id"])) {
+	if (isset($_GET["kick"]) && isset($_GET["hrac"])) {
+		zapis("DELETE FROM `room".$_GET["id"]."` WHERE `id` = ".$_GET["hrac"]);
+	}
+}
 
 ?>

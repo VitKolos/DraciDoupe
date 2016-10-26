@@ -54,7 +54,7 @@ error_reporting(0);
 		if ($vystup2["pohlavi"]=="muz") {$barva = "blue";}
 		if ($vystup2["pohlavi"]=="zena") {$barva = "red";}
 			echo '<div style="color:white; display:inline-block; background-color:'.$barva.'";>'.htmlspecialchars($vystup2["jmeno"]).'</div>';
-			echo ' – peníze: <input type="text" name="penize" size="3" value="'.$vystup2["penize"].'" onchange="editvar(this.name, '.$vystup2["id"].', this.value)"> útok: <input type="text" size="3" name="cp" value="'.$vystup2["cp"].'" onchange="editvar(this.name, '.$vystup2["id"].', this.value)"> zdraví: <input type="text" size="3" name="hp" value="'.$vystup2["hp"].'" onchange="editvar(this.name, '.$vystup2["id"].', this.value)">';
+			echo ' – peníze: <input type="text" name="penize" size="3" value="'.$vystup2["penize"].'" onchange="editvar(this.name, '.$vystup2["id"].', this.value)"> útok: <input type="text" size="3" name="cp" value="'.$vystup2["cp"].'" onchange="editvar(this.name, '.$vystup2["id"].', this.value)"> zdraví: <input type="text" size="3" name="hp" value="'.$vystup2["hp"].'" onchange="editvar(this.name, '.$vystup2["id"].', this.value)"> <div style="display:inline;" onclick="kick('.$vystup2["id"].')"><svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="#ff0000" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg></div>';
 			echo "<br>";
 			$nejacihraci=true;
 	}
