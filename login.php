@@ -10,7 +10,13 @@
     <body>
         <div style="text-align:center">
 		<?php if (isset($_GET["start"])) {echo '<div style="background-color:#90EE90; color:white;"><small><b>Vítejte v online hře Dračí doupě, kterou vytvořil Bajker006.<br>Nejprve se, prosím, přihlašte nebo zaregistrujte.</b></small></div><br>';} else{echo '<div style="text-align:left;"><small><a href="index.php">Zpět</a></small></div>';} ?>
-		<?php session_start(); if(isset($_GET["id"]) && !isset($_SESSION["prihlaseni"])){echo "Nejdřív se musíš přihlásit.";}   if (isset($_SESSION["prihlaseni"]) && isset($_GET["odhlasit"])) {session_unset(); session_destroy(); echo "Byl jsi odhlášen.";} ?><div id="login"><form action="login.php" method="post"><table style="text-align:left; display:inline-block;"><tr><td>Nick: </td><td><input type="text" name="nick" <?php if(isset($_GET['registrace'])){echo 'value="'.$_GET["registrace"].'"';} ?> ></td></tr><tr><td>Heslo: </td><td><input type="password" name="heslo"></td></tr></table><br><input type="submit" class="button blue" value="Odeslat"></form><br>
+		<?php session_start(); if(isset($_GET["id"]) && !isset($_SESSION["prihlaseni"])){echo 'Nejdřív se musíš přihlásit.';}
+		if (isset($_SESSION["prihlaseni"]) && isset($_GET["odhlasit"])) {session_unset(); session_destroy(); echo "Byl jsi odhlášen.";} ?>
+		<div id="login"><form action="<?php
+		if(isset($_GET["klic"])) {echo "login.php?klic=".$_GET["klic"];}
+		else if(isset($_GET["id"]) && isset($_GET["heslo"])) {echo "login.php?id=".$_GET["id"]."&heslo=".$_GET["heslo"];}
+		else {echo "login.php";}
+		?>" method="post"><table style="text-align:left; display:inline-block;"><tr><td>Nick: </td><td><input type="text" name="nick" <?php if(isset($_GET['registrace'])){echo 'value="'.$_GET["registrace"].'"';} ?> ></td></tr><tr><td>Heslo: </td><td><input type="password" name="heslo"></td></tr></table><br><input type="submit" class="button blue" value="Odeslat"></form><br>
 <?php if(!isset($_GET['registrace'])){echo 'Ještě nemáš účet? <a href="registrace.php">Registrace.</a>';} ?>
 </div><br>
 		<?php
@@ -34,8 +40,16 @@
 				$_SESSION["nick"] = $nick;
 					if ($vypravec != 0) {$_SESSION["vypravec"] = 1;}
 					if ($premiovy != 0) {$_SESSION["premiovy"] = 1;}
-					echo 'Přihlášení proběhlo úspěšně! <b><a href="/">Jít domů.</a></b>';
-					echo '<meta http-equiv="refresh" content="1;url=index.php">';
+					echo 'Přihlášení proběhlo úspěšně! <b><a href="';
+					if(isset($_GET["klic"])) {echo "sroom.php?klic=".$_GET["klic"];}
+					else if(isset($_GET["id"]) && isset($_GET["heslo"])) {echo "login.php?id=".$_GET["id"]."&heslo=".$_GET["heslo"];}
+					else {echo "index.php";}
+					echo '">Jít dál.</a></b>';
+					echo '<meta http-equiv="refresh" content="1;url=';
+					if(isset($_GET["klic"])) {echo "sroom.php?klic=".$_GET["klic"];}
+					else if(isset($_GET["id"]) && isset($_GET["heslo"])) {echo "login.php?id=".$_GET["id"]."&heslo=".$_GET["heslo"];}
+					else {echo "index.php";}
+					echo '">';
 					echo '<style>#login{display:none;}</style>';
 			}
 			else {echo "Špatné heslo!";}
@@ -58,7 +72,7 @@
 					if ($premiovy != 0) {zapis('UPDATE `hraci` SET `premiovy`=1 WHERE id = '.$_SESSION["prihlaseni"]); $_SESSION["premiovy"] = 1;}
 					$dotaz = $db->prepare("DELETE FROM `hesla` WHERE id='".$_GET["id"]."'");
 					$dotaz->execute($parametry);
-					echo 'Výborně! <b><a href="/">Jít domů.</a></b>';
+					echo 'Výborně! <b><a href="index.php">Jít domů.</a></b>';
 					echo '<meta http-equiv="refresh" content="1;url=index.php">';
 					echo '<style>#login{display:none;}</style>';
 				}

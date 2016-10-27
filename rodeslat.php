@@ -54,4 +54,45 @@ if ($pos !== false && isset($_GET["id"])) {
 	}
 }
 
+//secret
+
+if ($pos !== false && isset($_POST["klic"])) {
+	if(isset($_POST["cas"]) && isset($_POST["autor"]) && $_POST["autor"]==0 && !isset($_POST["zprava"])) {
+		zapis("UPDATE `secretrooms` SET `aktivita` = '".time()."' WHERE `klic` = '".$_POST["klic"]."'");
+		zapis("UPDATE `secretrooms` SET `cas` = '".$_POST["cas"]."' WHERE `klic` = '".$_POST["klic"]."'");
+	}
+	else if (isset($_POST["cas"]) && isset($_POST["autor"]) && $_POST["autor"]==0 && isset($_POST["zprava"])) {
+		zapis("UPDATE `secretrooms` SET `aktivita` = '".time()."' WHERE `klic` = '".$_POST["klic"]."'");
+		zapis("UPDATE `secretrooms` SET `cas` = '".$_POST["cas"]."' WHERE `klic` = '".$_POST["klic"]."'");
+		zapis("INSERT INTO `sroomchat".$_POST["klic"]."`(`autor`, `text`) VALUES ('".$_POST["autor"]."', '".$_POST["zprava"]."')");
+	}
+	else if (!isset($_POST["cas"]) && isset($_POST["autor"]) && $_POST["autor"]!=0 && isset($_POST["zprava"])) {
+		zapis("UPDATE `secretrooms` SET `aktivita` = '".time()."' WHERE `klic` = '".$_POST["klic"]."'");
+		zapis("INSERT INTO `sroomchat".$_POST["klic"]."`(`autor`, `text`) VALUES ('".$_POST["autor"]."', '".$_POST["zprava"]."')");
+	}
+}
+if ($pos !== false && isset($_GET["klic"])) {
+	if (isset($_GET["edit"]) && isset($_GET["hrac"]) && isset($_GET["typ"]) && isset($_GET["hodnota"])) {
+		zapis("UPDATE `sroom".$_GET["klic"]."` SET `".$_GET["typ"]."` = '".$_GET["hodnota"]."' WHERE `id` = ".$_GET["hrac"]);
+		
+		$db = new PDO($dbset, $dbnick, $dbpass);
+		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$parametry = array();
+		$dotaz="";
+		$vystup="";
+		$dotaz = $db->prepare("SELECT * FROM sroom".$_GET["klic"]." WHERE id=".$_GET["hrac"]);
+		$dotaz->execute($parametry);
+		for ($i = 0; $vystup = $dotaz->fetch(); $i++) {
+			$jmenohrace = $vystup["jmeno"];
+		}
+		
+		zapis("INSERT INTO `sroomchat".$_GET["klic"]."`(`autor`, `text`) VALUES ('0', ' ### [".$jmenohrace.": ".$_GET["typ"]." = ".$_GET["hodnota"]."]')");
+	}
+}
+if ($pos !== false && isset($_GET["klic"])) {
+	if (isset($_GET["kick"]) && isset($_GET["hrac"])) {
+		zapis("DELETE FROM `sroom".$_GET["klic"]."` WHERE `id` = ".$_GET["hrac"]);
+	}
+}
+
 ?>
