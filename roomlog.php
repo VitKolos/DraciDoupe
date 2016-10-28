@@ -84,7 +84,7 @@ if (!isset($nazev)) {
 								if($vystup2["vypravec"] == $_POST["nick"]){$enemy = true;}
 							}
 							if ($enemy) {echo "Chyba: Tento nick je už zvolen někým jiným."; echo '<meta http-equiv="refresh" content="1;url=room.php?id='.$id.'">';}
-							else if (isset($_SESSION['forbidden']) && strpos($_SESSION['forbidden'], $id) !== false){echo "Chyba: Do tohoto roomu máš zakázaný přístup."; echo '<meta http-equiv="refresh" content="1;url=room.php?id='.$id.'">';}
+							else if (isset($_SESSION['forbidden']) && strpos($_SESSION['forbidden'], $id) !== false){echo "Chyba: Do tohoto roomu máš zakázaný přístup."; echo '<br><a href="room.php?id='.$id.'">OK</a><meta http-equiv="refresh" content="1;url=room.php?id='.$id.'">';}
 							else {
 							$_SESSION["nick"] = $_POST["nick"];
 							$_SESSION["pohlavi"] = $_POST["pohlavi"];
@@ -103,7 +103,7 @@ if (!isset($nazev)) {
 								$_SESSION["idhrace"] = $vystup3["id"];
 							}
 							
-							echo '<meta http-equiv="refresh" content="1;url=room.php?id='.$id.'">';
+							echo '<br><a href="room.php?id='.$id.'">OK</a><meta http-equiv="refresh" content="1;url=room.php?id='.$id.'">';
 							}
 						}
 						else {

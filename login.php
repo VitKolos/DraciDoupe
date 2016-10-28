@@ -10,7 +10,7 @@
     <body>
         <div style="text-align:center">
 		<?php if (isset($_GET["start"])) {echo '<div style="background-color:#90EE90; color:white;"><small><b>Vítejte v online hře Dračí doupě, kterou vytvořil Bajker006.<br>Nejprve se, prosím, přihlašte nebo zaregistrujte.</b></small></div><br>';} else{echo '<div style="text-align:left;"><small><a href="index.php">Zpět</a></small></div>';} ?>
-		<?php session_start(); if(isset($_GET["id"]) && !isset($_SESSION["prihlaseni"])){echo 'Nejdřív se musíš přihlásit.';}
+		<?php session_start(); if(isset($_GET["id"]) && !isset($_SESSION["prihlaseni"])){echo '<div id="nejdriv">Nejdřív se musíš přihlásit.</div>';}
 		if (isset($_SESSION["prihlaseni"]) && isset($_GET["odhlasit"])) {session_unset(); session_destroy(); echo "Byl jsi odhlášen.";} ?>
 		<div id="login"><form action="<?php
 		if(isset($_GET["klic"])) {echo "login.php?klic=".$_GET["klic"];}
@@ -44,13 +44,12 @@
 					if(isset($_GET["klic"])) {echo "sroom.php?klic=".$_GET["klic"];}
 					else if(isset($_GET["id"]) && isset($_GET["heslo"])) {echo "login.php?id=".$_GET["id"]."&heslo=".$_GET["heslo"];}
 					else {echo "index.php";}
-					echo '">Jít dál.</a></b>';
+					echo '">Pokračovat.</a></b><br>';
 					echo '<meta http-equiv="refresh" content="1;url=';
 					if(isset($_GET["klic"])) {echo "sroom.php?klic=".$_GET["klic"];}
-					else if(isset($_GET["id"]) && isset($_GET["heslo"])) {echo "login.php?id=".$_GET["id"]."&heslo=".$_GET["heslo"];}
 					else {echo "index.php";}
 					echo '">';
-					echo '<style>#login{display:none;}</style>';
+					echo '<style>#login{display:none;} #nejdriv{display:none;}</style>';
 			}
 			else {echo "Špatné heslo!";}
 		}
@@ -72,7 +71,10 @@
 					if ($premiovy != 0) {zapis('UPDATE `hraci` SET `premiovy`=1 WHERE id = '.$_SESSION["prihlaseni"]); $_SESSION["premiovy"] = 1;}
 					$dotaz = $db->prepare("DELETE FROM `hesla` WHERE id='".$_GET["id"]."'");
 					$dotaz->execute($parametry);
-					echo 'Výborně! <b><a href="index.php">Jít domů.</a></b>';
+					echo 'Výborně! ';
+					if ($premiovy != 0) {echo "Jsi prémiový vypravěč. ";}
+					else {echo "Jsi vypravěč. ";}
+					echo '<b><a href="index.php">Jít domů.</a></b>';
 					echo '<meta http-equiv="refresh" content="1;url=index.php">';
 					echo '<style>#login{display:none;}</style>';
 				}

@@ -75,7 +75,7 @@ if (!isset($_SESSION["vypravec"])) {header("Location: index.php"); exit;}
 			$_SESSION["owner"] = $roomid;
 			zapis('CREATE TABLE `'.$dbname.'`.`room'.$roomid.'` ( `id` INT NOT NULL AUTO_INCREMENT , `jmeno` TEXT CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL , `pohlavi` TEXT CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL , `penize` INT NOT NULL , `cp` INT NOT NULL , `hp` INT NOT NULL, PRIMARY KEY (id) ) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_czech_ci');
 			zapis('CREATE TABLE `'.$dbname.'`.`roomchat'.$roomid.'` ( `id` INT NOT NULL AUTO_INCREMENT , `autor` int(11) NOT NULL , `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP , `text` text CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL , PRIMARY KEY (id) ) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_czech_ci');
-			echo 'Hotovo!<meta http-equiv="refresh" content="1;url=room.php?id='.$roomid.'"><style>#novy-room{display:none;}</style>';
+			echo 'Hotovo! <b><a href="room.php?id='.$roomid.'">Pokračovat.</a></b><meta http-equiv="refresh" content="1;url=room.php?id='.$roomid.'"><style>#novy-room{display:none;}</style>';
 			}
 			else if ($stejnynazev) {
 				echo "Zadejte jiný název roomu.";

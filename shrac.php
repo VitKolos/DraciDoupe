@@ -361,7 +361,7 @@ setInterval(title, 1000);
 							$akthraci = $hraci;
 							$akthraci--;
 							zapis('UPDATE `secretrooms` SET `hraci`='.$akthraci.' WHERE klic = "'.$klic.'"');
-							echo '<meta http-equiv="refresh" content="1;url=index.php">';
+							echo '<br><a href="index.php">OK</a><meta http-equiv="refresh" content="1;url=index.php">';
 						}
 						if (isset($_GET["quit"]) && isset($_GET["odhlasit"])) {
 							zapis("DELETE FROM sroom".$klic." WHERE jmeno='".$_SESSION["nick"]."'");
@@ -370,7 +370,7 @@ setInterval(title, 1000);
 							$akthraci = $hraci;
 							$akthraci--;
 							zapis('UPDATE `secretrooms` SET `hraci`='.$akthraci.' WHERE klic = "'.$klic.'"');
-							echo '<meta http-equiv="refresh" content="1;url=login.php?odhlasit">';
+							echo '<br><a href="login.php?odhlasit">OK</a><meta http-equiv="refresh" content="1;url=login.php?odhlasit">';
 						}
 					}
 				}

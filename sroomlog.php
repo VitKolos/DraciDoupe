@@ -83,8 +83,8 @@ if (!isset($nazev)) {
 							for ($i = 0; $vystup2 = $dotaz2->fetch(); $i++) {
 								if($vystup2["vypravec"] == $_POST["nick"]){$enemy = true;}
 							}
-							if ($enemy) {echo "Chyba: Tento nick je už zvolen někým jiným."; echo '<meta http-equiv="refresh" content="1;url=sroom.php?id='.$id.'">';}
-							else if (isset($_SESSION['forbidden']) && strpos($_SESSION['forbidden'], "s".$id) !== false){echo "Chyba: Do tohoto roomu máš zakázaný přístup."; echo '<meta http-equiv="refresh" content="1;url=sroom.php?id='.$id.'">';}
+							if ($enemy) {echo "Chyba: Tento nick je už zvolen někým jiným."; echo '<br><a href="sroom.php?id='.$id.'">OK</a><meta http-equiv="refresh" content="1;url=sroom.php?id='.$id.'">';}
+							else if (isset($_SESSION['forbidden']) && strpos($_SESSION['forbidden'], "s".$id) !== false){echo "Chyba: Do tohoto roomu máš zakázaný přístup."; echo '<br><a href="sroom.php?id='.$id.'">OK</a><meta http-equiv="refresh" content="1;url=sroom.php?id='.$id.'">';}
 							else {
 							$_SESSION["nick"] = $_POST["nick"];
 							$_SESSION["pohlavi"] = $_POST["pohlavi"];
@@ -103,11 +103,11 @@ if (!isset($nazev)) {
 								$_SESSION["idhrace"] = $vystup3["id"];
 							}
 							
-							echo '<meta http-equiv="refresh" content="1;url=sroom.php?klic='.$klic.'">';
+							echo '<br><a href="sroom.php?klic='.$klic.'">OK</a><meta http-equiv="refresh" content="1;url=sroom.php?klic='.$klic.'">';
 							}
 						}
 						else if (isset($_POST["nick"]) && isset($_POST["pohlavi"]) && isset($_POST["heslo"]) && md5($_POST["heslo"]) != $klic) {
-							echo 'Špatné heslo!<meta http-equiv="refresh" content="1;url=sroom.php?id='.$id.'">';
+							echo 'Špatné heslo!<br><a href="sroom.php?id='.$id.'">OK</a><meta http-equiv="refresh" content="1;url=sroom.php?id='.$id.'">';
 						}
 						else if (isset($_GET["klic"])) {
 							$muz = " ";

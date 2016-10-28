@@ -462,7 +462,7 @@ setInterval(title, 1000);
 							zapis("DROP TABLE `sroomchat".$klic."`");
 							zapis("DELETE FROM secretrooms WHERE klic='".$klic."'");
 							unset($_SESSION['owner']);
-							echo "<br>Room byl zrušen.<style>#room{display:none;}</style>";
+							echo '<br>Room byl zrušen.<br><a href="index.php">OK</a><style>#room{display:none;}</style>';
 							echo '<meta http-equiv="refresh" content="1;url=index.php">';
 						}
 						if (isset($_GET["delete"]) && isset($_GET["odhlasit"])) {
@@ -470,7 +470,7 @@ setInterval(title, 1000);
 							zapis("DROP TABLE `sroomchat".$klic."`");
 							zapis("DELETE FROM secretrooms WHERE klic='".$klic."'");
 							unset($_SESSION['owner']);
-							echo "<br>Room byl zrušen.<style>#room{display:none;}</style>";
+							echo '<br>Room byl zrušen.<br><a href="login.php?odhlasit">OK</a><style>#room{display:none;}</style>';
 							echo '<meta http-equiv="refresh" content="1;url=login.php?odhlasit">';
 						}
 					}
