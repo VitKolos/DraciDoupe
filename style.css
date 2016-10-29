@@ -1,5 +1,5 @@
 body {
-	font: 2rem Calibri, sans-serif;
+	font: 1.5rem Calibri, sans-serif;
 }
 
 .button {
@@ -23,22 +23,61 @@ body {
 
 .yes {
 	background-color: #4CAF50;
-	font-size: 3vw;
+	font-size: 1.8rem;
 	border: 2px solid #4CAF50;
 }
 .black {
 	background-color: #000;
-	font-size: 3vw;
+	font-size: 1.8rem;
 	border: 2px solid #000;
 }
-.logout {
+
+
+
+/* index */
+
+#index .logout {
 	background-color: #ccc;
-	font-size: 2rem;
+	font-size: 1.6rem;
 	border: 2px solid #ccc;
 }
+#index .logout:hover {
+	background-color: white;
+}
+#index a {width:200px; font-size: 1.6rem; height:30px;}
+#index #logout-text {visibility: hidden;}
+#index .logout-m {position:fixed; height: 30px; width: 25px; opacity:0.5; }
+#index .logout-m:hover {opacity:1;}
+.index-hdr-m {font-size:2rem;}
+.odkaz {width:100%;}
+.prehled-m td{display:block;}
+
+/* responsive */
+@media only screen and (min-width: 610px) {
+	.index-hdr {font-size:2em;}
+	body{font-size:2rem;}
+	#login input[type=text], #login input[type=password], #registrace input[type=text], #registrace input[type=password], #novy-room input[type=text], #novy-room input[type=password], #roomlog input[type=text], #room input {
+		font-size:1.5rem;
+	}
+	.prehled-m td {display:table-cell;}
+}
+
+@media only screen and (min-width: 860px) {
+	#index #logout-text {visibility: visible; }
+	#index .logout {position:fixed; height: 30px; width: 200px;}
+}
+
+@media only screen and (min-width: 1260px) {
+	#index a {position:fixed; width:200px; height:30px;}
+	#index #logout-text {visibility: visible; }
+	#index .logout {position:fixed; height: 30px; width: 200px; opacity:1; }
+}
+
+
+
 .no {
 	background-color: red;
-	font-size: 20px;
+	font-size: 1.5rem;
 	border: 2px solid red;
 }
 
@@ -48,9 +87,10 @@ body {
 	border: 2px solid #82e9ff;
 }
 
-/*buttons end*/
 
-#login input[type=text] {
+
+/* input */
+#login input[type=text], #login input[type=password], #registrace input[type=text], #registrace input[type=password], #novy-room input[type=text], #novy-room input[type=password], #roomlog input[type=text] {
     padding: 10px 15px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -58,102 +98,9 @@ body {
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
-font-size: 1.5rem;
 }
 
-#login input[type=text]:focus {
-    border: 3px solid #555;
-}
-
-#login input[type=password] {
-    padding: 10px 15px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 3px solid #ccc;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    outline: none;
-font-size: 1.5rem;
-}
-
-#login input[type=password]:focus {
-    border: 3px solid #555;
-}
-
-
-#registrace input[type=text] {
-    padding: 10px 15px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 3px solid #ccc;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    outline: none;
-font-size: 1.5rem;
-}
-
-#registrace input[type=text]:focus {
-    border: 3px solid #555;
-}
-
-#registrace input[type=password] {
-    padding: 10px 15px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 3px solid #ccc;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    outline: none;
-font-size: 1.5rem;
-}
-
-#registrace input[type=password]:focus {
-    border: 3px solid #555;
-}
-
-
-#novy-room input[type=text] {
-    padding: 10px 15px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 3px solid #ccc;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    outline: none;
-font-size: 1.5rem;
-}
-
-#novy-room input[type=text]:focus {
-    border: 3px solid #555;
-}
-
-#novy-room input[type=password] {
-    padding: 10px 15px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 3px solid #ccc;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    outline: none;
-font-size: 1.5rem;
-}
-
-#novy-room input[type=password]:focus {
-    border: 3px solid #555;
-}
-
-#roomlog input[type=text] {
-    padding: 10px 15px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 3px solid #ccc;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    outline: none;
-font-size: 1.5rem;
-}
-
-#roomlog input[type=text]:focus {
+#login input[type=text]:focus, #login input[type=password]:focus, #registrace input[type=text]:focus, #registrace input[type=password]:focus, #novy-room input[type=text]:focus, #novy-room input[type=password]:focus, #roomlog input[type=text]:focus {
     border: 3px solid #555;
 }
 
@@ -176,15 +123,11 @@ font-size: 1.5rem;
 #room th, #room td {
     padding: 5px 10px 5px 10px;
 }
-#room input {
-font-size: 1.5rem;
-}
 #room #text, #room #cas, #room #submit {
 	padding: 5px;
     border: 2px solid #ccc;
     border-radius: 4px;
     background-color: #f8f8f8;
-	font-size: 1rem;
 	-webkit-transition-duration: 1s; /* Safari */
 	transition-duration: 1s;
 }
@@ -203,7 +146,7 @@ font-size: 1.5rem;
     border: 2px solid #888;
 }
 input {
-font-size: 1.5rem;
+font-size: 1rem;
 }
 #rolovat {
 	-webkit-transition-duration: 0.5s; /* Safari */

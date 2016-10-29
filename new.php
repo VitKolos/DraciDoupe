@@ -177,6 +177,5 @@ if (!isset($_SESSION["vypravec"])) {header("Location: index.php"); exit;}
 		}
 		?>
 		</div>
-		<br><br>
 	</body>
 </html>
