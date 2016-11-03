@@ -23,10 +23,6 @@
 		<br><br>
 		<table class="prehled prehled-m" style="display: inline-block; text-align:left; border-spacing: 20px 0px;">
 		<?php
-		if (!isset($_SESSION['prihlaseni'])) {
-			header("Location: login.php?start");
-			exit;
-		}
 		require_once("databaze.php");
 		$db = new PDO($dbset, $dbnick, $dbpass);
 		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -74,7 +70,15 @@
 		}
 		?>
 		</table>
-		<div id="index"><br><a href="login.php?odhlasit" title="Odhlásit se" class="button logout logout-m" style="top:25px; right:25px;"><svg style="width:24px;height:24px" viewBox="0 0 24 16"><path fill="#000" d="M16.56,5.44L15.11,6.89C16.84,7.94 18,9.83 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12C6,9.83 7.16,7.94 8.88,6.88L7.44,5.44C5.36,6.88 4,9.28 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12C20,9.28 18.64,6.88 16.56,5.44M13,3H11V13H13" /></svg> <span id="logout-text" >Odhlásit se</span></a>
+		<div id="index"><br>
+		<?php
+		if (isset($_SESSION['prihlaseni'])) {
+			echo '<a href="login.php?odhlasit" title="Odhlásit se" class="button logout logout-m" style="top:25px; right:25px;"><svg style="width:24px;height:24px" viewBox="0 0 24 16"><path fill="#000" d="M16.56,5.44L15.11,6.89C16.84,7.94 18,9.83 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12C6,9.83 7.16,7.94 8.88,6.88L7.44,5.44C5.36,6.88 4,9.28 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12C20,9.28 18.64,6.88 16.56,5.44M13,3H11V13H13" /></svg> <span id="logout-text" >Odhlásit se</span></a>';
+		}
+		else {
+			echo '<a href="login.php?start" title="Přihlásit se" class="button login login-m" style="top:25px; right:25px;"><svg style="width:24px;height:24px" viewBox="0 0 24 16"><path fill="green" d="M16.56,5.44L15.11,6.89C16.84,7.94 18,9.83 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12C6,9.83 7.16,7.94 8.88,6.88L7.44,5.44C5.36,6.88 4,9.28 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12C20,9.28 18.64,6.88 16.56,5.44M13,3H11V13H13" /></svg> <span id="login-text" style="color:black;">Přihlásit se</span></a>';
+		}
+		?>
 		<a href="mailto:bajker006@gmail.com" title="Nahlásit chybu" class="button no" style="top:25px; left:25px;">Nahlásit chybu</a>
 		<a href="https://github.com/VitKolos/DraciDoupe/commits" title="Novinky" class="button blue" style="top:100px; left:25px;">Novinky ve hře</a><br><br>
 		<a href="https://github.com/" style="top:115px; left:290px; width:32px;"><svg id="octicon" height="32" version="1.1" fill="#ccc" viewBox="0 0 16 16" width="32"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a>

@@ -48,6 +48,19 @@ body {
 #index #logout-text {visibility: hidden;}
 #index .logout-m {position:fixed; height: 30px; width: 25px; opacity:0.5; }
 #index .logout-m:hover {opacity:1;}
+
+#index .login {
+	background-color: greenyellow;
+	font-size: 1.6rem;
+	border: 2px solid greenyellow;
+}
+#index .login:hover {
+	background-color: white;
+}
+#index #login-text {visibility: hidden;}
+#index .login-m {position:fixed; height: 30px; width: 25px; opacity:0.5; }
+#index .login-m:hover {opacity:1;}
+
 .index-hdr-m {font-size:2rem;}
 .odkaz {width:100%;}
 .prehled-m td{display:block;}
@@ -65,12 +78,18 @@ body {
 @media only screen and (min-width: 860px) {
 	#index #logout-text {visibility: visible; }
 	#index .logout {position:fixed; height: 30px; width: 200px;}
+	
+	#index #login-text {visibility: visible; }
+	#index .login {position:fixed; height: 30px; width: 200px;}
 }
 
 @media only screen and (min-width: 1260px) {
 	#index a {position:fixed; width:200px; height:30px;}
 	#index #logout-text {visibility: visible; }
 	#index .logout {position:fixed; height: 30px; width: 200px; opacity:1; }
+	
+	#index #login-text {visibility: visible; }
+	#index .login {position:fixed; height: 30px; width: 200px; opacity:1; }
 }
 
 
