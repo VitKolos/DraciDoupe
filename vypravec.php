@@ -134,6 +134,10 @@ function kick(id) {
 	}
 }
 
+function fight(id) {
+	alert("Režim boje ještě není dostupný.");
+}
+
 function editvar(typ, id, hodnota) {
 	if (typ != "" && id != "" && hodnota != "" && !isNaN(hodnota)) {
 		document.getElementById("editsubmittext").style.display = "inline";
