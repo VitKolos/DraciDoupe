@@ -56,7 +56,7 @@ if (!isset($nazev)) {
 	exit;
 }
 if (!isset($_SESSION["prihlaseni"]) && !isset($_GET["klic"])) {
-	header("Location: index.php");
+	header("Location: login.php");
 	exit;
 }
 else if (!isset($_SESSION["prihlaseni"]) && isset($_GET["klic"])) {

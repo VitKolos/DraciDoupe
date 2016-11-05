@@ -9,7 +9,7 @@
     </head>
     <body>
         <div style="text-align:center">
-		<?php if (isset($_GET["start"])) {echo '<div style="background-color:#90EE90; color:white;"><small><b>Vítejte v online hře Dračí doupě, kterou vytvořil Bajker006.<br>Nejprve se, prosím, přihlašte nebo zaregistrujte.</b></small></div><br>';} else{echo '<div style="text-align:left;"><small><a href="index.php">Zpět</a></small></div>';} ?>
+		<?php if (isset($_GET["start"])) {echo '<div style="background-color:#90EE90; color:white;"><small><b>Vítejte v online hře Dračí doupě, kterou vytvořil Bajker006.<br>Nejprve se, prosím, přihlašte nebo zaregistrujte.</b></small></div>';} echo '<div style="text-align:left; display:block;"><small><a href="index.php">Zpět</a></small></div>'; ?>
 		<?php session_start(); if(isset($_GET["id"]) && !isset($_SESSION["prihlaseni"])){echo '<div id="nejdriv">Nejdřív se musíš přihlásit.</div>';}
 		if (isset($_SESSION["prihlaseni"]) && isset($_GET["odhlasit"])) {session_unset(); session_destroy(); echo "Byl jsi odhlášen.";} ?>
 		<div id="login"><form action="<?php

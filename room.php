@@ -34,7 +34,7 @@ if (!isset($nazev)) {
 }
 
 if (!isset($_GET["id"]) || !isset($_SESSION["prihlaseni"])) {
-	header("Location: index.php");
+	header("Location: login.php");
 	exit;
 }
 else if (isset($_SESSION["hrac"]) && $_SESSION["hrac"] == $_GET["id"]) {
