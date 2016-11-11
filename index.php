@@ -3,12 +3,26 @@
     <head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="utf-8">
+		<meta http-equiv="refresh" content="10">
 		<title>Bajkerovo dračí doupě</title>
 		<link rel="stylesheet" href="style.css">
 		<link rel="icon" href="http://pre12.deviantart.net/b248/th/pre/f/2013/247/e/3/dragon_icon_by_ferocefv-d6krb7y.png" />
     </head>
     <body>
-		<meta http-equiv="refresh" content="10">
+		<script>
+		function check() {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					
+				}
+			};
+			xhttp.open("GET", "check.php", true);
+			xhttp.send();
+		}
+		check();
+		setInterval(check, 5000);
+		</script>
         <div style="text-align:center"><br>
 		<h1 class="index-hdr index-hdr-m" style="padding:0px; margin:0px;">Bajkerovo dračí doupě</h1>
 		<?php
