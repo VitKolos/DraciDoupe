@@ -55,6 +55,7 @@ if (!isset($nazev)) {
 					if (time() > $allowedztime) {
 						zapis("DROP TABLE `room".$id."`");
 						zapis("DROP TABLE `roomchat".$id."`");
+						zapis("DROP TABLE `roomsouboje".$id."`");
 						zapis("DELETE FROM rooms WHERE id='".$id."'");
 						header("Location: index.php");
 						exit;
@@ -62,6 +63,7 @@ if (!isset($nazev)) {
 					if (time() > $allowedatime) {
 						zapis("DROP TABLE `room".$id."`");
 						zapis("DROP TABLE `roomchat".$id."`");
+						zapis("DROP TABLE `roomsouboje".$id."`");
 						zapis("DELETE FROM rooms WHERE id='".$id."'");
 						header("Location: index.php");
 						exit;
@@ -111,7 +113,7 @@ if (!isset($nazev)) {
 							$zena = " ";
 							if (isset($_SESSION["pohlavi"])) {if ($_SESSION["pohlavi"] == "muz") {$muz = " checked"; $zena = " ";}
 							else if ($_SESSION["pohlavi"] == "zena") {$zena = " checked"; $muz = " ";}}
-							echo '<form id="roomlog" action="room.php?id='.$id.'" method="post"><table style="text-align:left; display:inline-block;"><tr><td>Tvůj nick (jaký chceš): </td><td><input type="text" name="nick" value="'.$_SESSION["nick"].'"></td></tr><tr><td>Jsi:</td><td><input type="radio" name="pohlavi" value="muz"'.$muz.'> Muž  <input type="radio" name="pohlavi" value="zena"'.$zena.'> Žena</td></tr></table><br><input type="submit" value="Odeslat"></form>';
+							echo '<form id="roomlog" action="room.php?id='.$id.'" method="post"><table style="text-align:left; display:inline-block;"><tr><td>Tvůj nick: </td><td><input type="text" name="nick" value="'.$_SESSION["nick"].'"></td></tr><tr><td>Jsi:</td><td><input type="radio" name="pohlavi" value="muz"'.$muz.'> Muž  <input type="radio" name="pohlavi" value="zena"'.$zena.'> Žena</td></tr></table><br><input type="submit" value="Odeslat"></form>';
 						}
 				}	
 			?>

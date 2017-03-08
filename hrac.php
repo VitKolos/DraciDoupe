@@ -70,6 +70,7 @@ if (!isset($nazev)) {
 					if (time() > $allowedztime) {
 						zapis("DROP TABLE `room".$id."`");
 						zapis("DROP TABLE `roomchat".$id."`");
+						zapis("DROP TABLE `roomsouboje".$id."`");
 						zapis("DELETE FROM rooms WHERE id='".$id."'");
 						header("Location: index.php");
 						exit;
@@ -77,6 +78,7 @@ if (!isset($nazev)) {
 					if (time() > $allowedatime) {
 						zapis("DROP TABLE `room".$id."`");
 						zapis("DROP TABLE `roomchat".$id."`");
+						zapis("DROP TABLE `roomsouboje".$id."`");
 						zapis("DELETE FROM rooms WHERE id='".$id."'");
 						header("Location: index.php");
 						exit;
@@ -95,15 +97,42 @@ if (!isset($nazev)) {
 						<tr><td><div id="hrac"><div style="text-align:center;"><svg width="40px" height="40px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-default"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(0 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(30 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.08333333333333333s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(60 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.16666666666666666s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(90 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.25s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(120 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.3333333333333333s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(150 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.4166666666666667s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(180 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.5s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(210 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.5833333333333334s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(240 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.6666666666666666s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(270 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.75s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(300 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.8333333333333334s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(330 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.9166666666666666s" repeatCount="indefinite"/></rect></svg></div></div></td></tr>
 						<tr><td style="border-bottom: none;"><div id="chat" style="max-height:40vh; overflow:scroll; overflow-x: hidden;"><div style="text-align:center;"></div></div></td></tr>
 						<tr><td style="border-top: none; text-align:center;"><div id="rolovat" onclick="roluj()"><svg style="width:24px;height:24px" viewBox="0 0 24 24">     <path fill="#000000" d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" /> </svg><svg style="width:24px;height:24px" viewBox="0 0 24 24">     <path fill="#000000" d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" /> </svg><svg style="width:24px;height:24px" viewBox="0 0 24 24">     <path fill="#000000" d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" /> </svg><svg style="width:24px;height:24px" viewBox="0 0 24 24">     <path fill="#000000" d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" /> </svg><svg style="width:24px;height:24px" viewBox="0 0 24 24">     <path fill="#000000" d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" /> </svg></div></td></tr>
-						<tr><td style="border-bottom: none; vertical-align:center;">Zpráva:<br><input id="text" onKeyDown="if(event.keyCode==13) submit();" name="zprava" style="width:99%; height:20px;" autofocus>';
-						/*if(isset($_GET["zprava"])) {echo $_GET["zprava"];}*/
-						echo '</td></tr><tr><td style="border-top: none; text-align:center;"><!--<input type="hidden" name="id" value="'.$id.'">--> <button type="button" onclick="submit()" style="font-size:1.5rem" id="submit">Odeslat</button><br><div id="odstavec"></div><div style="background-color:#93ff68; border-radius: 15px;"><div id="tick" style="display:none;"><svg style="width:30px;height:30px" viewBox="0 0 24 24">     <path fill="#000000" d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9M10,16V19.08L13.08,16H20V4H4V16H10M16.5,8L11,13.5L7.5,10L8.91,8.59L11,10.67L15.09,6.59L16.5,8Z" /> </svg></div><div id="timetick" style="display:none;"><svg style="width:30px;height:30px" viewBox="0 0 24 24">     <path fill="#000000" d="M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2,4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z" /> </svg></div><div id="submitwrites" style="display:inline;"></div></div></td></tr>
+						<tr><td style="border-bottom: none; vertical-align:center;">Zpráva:<br><input id="text" onKeyDown="if(event.keyCode==13) submit();" name="zprava" style="width:99%; height:20px;" autofocus></td></tr><tr><td style="border-top: none; text-align:center;"><button type="button" onclick="submit()" style="font-size:1.5rem" id="submit">Odeslat</button><br>
+						<div id="odstavec"></div><div style="background-color:#93ff68; border-radius: 15px;"><div id="tick" style="display:none;"><svg style="width:30px;height:30px" viewBox="0 0 24 24">     <path fill="#000000" d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9M10,16V19.08L13.08,16H20V4H4V16H10M16.5,8L11,13.5L7.5,10L8.91,8.59L11,10.67L15.09,6.59L16.5,8Z" /> </svg></div><div id="timetick" style="display:none;"><svg style="width:30px;height:30px" viewBox="0 0 24 24">     <path fill="#000000" d="M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2,4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z" /> </svg></div><div id="submitwrites" style="display:inline;"></div></div></td></tr>
 						</table>
 						</div>
 						</div>
 						
-
+						<div style="text-align:center; display:none;" id="fight">
+							<div style="height:100px; width:100px; background-color:red; margin:10px; display:inline-block; " onclick="this.style.display=\'none\';"></div><br><div style="height:100px; width:100px; background-color:red; margin:10px; display:inline-block; " onclick="this.style.display=\'none\';"></div><div style="height:100px; width:100px; background-color:red; margin:10px; display:inline-block; " onclick="this.style.display=\'none\';"></div><div style="height:100px; width:100px; background-color:red; margin:10px; display:inline-block; " onclick="this.style.display=\'none\';"></div><br><div style="height:100px; width:100px; background-color:red; margin:10px; display:inline-block; " onclick="this.style.display=\'none\';"></div><div style="height:100px; width:100px; background-color:red; margin:10px; display:inline-block; " onclick="this.style.display=\'none\';"></div>
+						</div>
 <script>
+function fight(cp1, hp1, cp2, hp2) {
+	document.getElementById("fight").style.display = "block";
+	document.getElementById("room").style.display = "none";
+}
+
+function getFight() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			if(this.responseText != ""){
+				var odpoved = this.responseText.split(" ");
+				var radek = odpoved[0];
+				radek = radek.split("&");
+				var cp1 = radek[0];
+				var hp1 = radek[1];
+				var cp2 = radek[2];
+				var hp2 = radek[3];
+				fight(cp1, hp1, cp2, hp2);
+			}
+		}
+	};
+	xhttp.open("GET", "rfight.php?id='.$id.'&hrac='.$_SESSION["idhrace"].'", true);
+	xhttp.send();
+}
+setInterval(getFight, 1000);
+
 function roluj() {
    document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
 }

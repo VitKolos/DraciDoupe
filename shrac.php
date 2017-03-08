@@ -71,6 +71,7 @@ if (!isset($nazev)) {
 					if (time() > $allowedztime) {
 						zapis("DROP TABLE `sroom".$klic."`");
 						zapis("DROP TABLE `sroomchat".$klic."`");
+						zapis("DROP TABLE `sroomsouboje".$klic."`");
 						zapis("DELETE FROM secretrooms WHERE klic='".$klic."'");
 						header("Location: index.php");
 						exit;
@@ -78,6 +79,7 @@ if (!isset($nazev)) {
 					if (time() > $allowedatime) {
 						zapis("DROP TABLE `sroom".$klic."`");
 						zapis("DROP TABLE `sroomchat".$klic."`");
+						zapis("DROP TABLE `sroomsouboje".$klic."`");
 						zapis("DELETE FROM secretrooms WHERE klic='".$klic."'");
 						header("Location: index.php");
 						exit;

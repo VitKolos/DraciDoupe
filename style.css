@@ -2,6 +2,14 @@ body {
 	font: 1.5rem Calibri, sans-serif;
 }
 
+/*#copyvheslo, #copytheslo, #copyvadresa, #copytadresa {background-color:#eee; padding: 0 10px;}
+
+.mezera {margin: 5px;}
+
+button {
+	font: 1.25rem Calibri, sans-serif;
+}*/
+
 .button {
 	padding: 8px 20px;
 	text-align: center;
@@ -30,6 +38,11 @@ body {
 	background-color: #000;
 	font-size: 1.8rem;
 	border: 2px solid #000;
+}
+.grey {
+	background-color: grey;
+	font-size: 1.5rem;
+	border: 2px solid grey;
 }
 
 
@@ -65,32 +78,6 @@ body {
 .odkaz {width:100%;}
 .prehled-m td{display:block;}
 
-/* responsive */
-@media only screen and (min-width: 610px) {
-	.index-hdr {font-size:2em;}
-	body{font-size:2rem;}
-	#login input[type=text], #login input[type=password], #registrace input[type=text], #registrace input[type=password], #novy-room input[type=text], #novy-room input[type=password], #roomlog input[type=text], #room input {
-		font-size:1.5rem;
-	}
-	.prehled-m td {display:table-cell;}
-}
-
-@media only screen and (min-width: 860px) {
-	#index #logout-text {visibility: visible; }
-	#index .logout {position:fixed; height: 30px; width: 200px;}
-	
-	#index #login-text {visibility: visible; }
-	#index .login {position:fixed; height: 30px; width: 200px;}
-}
-
-@media only screen and (min-width: 1260px) {
-	#index a {position:fixed; width:200px; height:30px;}
-	#index #logout-text {visibility: visible; }
-	#index .logout {position:fixed; height: 30px; width: 200px; opacity:1; }
-	
-	#index #login-text {visibility: visible; }
-	#index .login {position:fixed; height: 30px; width: 200px; opacity:1; }
-}
 
 
 
@@ -165,7 +152,7 @@ body {
     border: 2px solid #888;
 }
 input {
-font-size: 1rem;
+	font-size: 1rem;
 }
 #rolovat {
 	-webkit-transition-duration: 0.5s; /* Safari */
@@ -174,4 +161,32 @@ font-size: 1rem;
 	background-color:#82e9ff;
 	border-radius: 15px;
 	cursor:pointer;
+}
+
+/* responsive */
+@media only screen and (min-width: 610px) {
+	.index-hdr {font-size:2em;}
+	body{font-size:2rem;}
+	button{font-size:1.75rem;}
+	#login input[type=text], #login input[type=password], #registrace input[type=text], #registrace input[type=password], #novy-room input[type=text], #novy-room input[type=password], #roomlog input[type=text], #room input {
+		font-size:1.5rem;
+	}
+	.prehled-m td {display:table-cell;}
+}
+
+@media only screen and (min-width: 860px) {
+	#index #logout-text {visibility: visible; }
+	#index .logout {position:fixed; height: 30px; width: 200px;}
+	
+	#index #login-text {visibility: visible; }
+	#index .login {position:fixed; height: 30px; width: 200px;}
+}
+
+@media only screen and (min-width: 1260px) {
+	#index a {position:fixed; width:200px; height:30px;}
+	#index #logout-text {visibility: visible; }
+	#index .logout {position:fixed; height: 30px; width: 200px; opacity:1; }
+	
+	#index #login-text {visibility: visible; }
+	#index .login {position:fixed; height: 30px; width: 200px; opacity:1; }
 }

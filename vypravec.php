@@ -68,6 +68,7 @@ if (!isset($nazev)) {
 					if (time() > $allowedztime) {
 						zapis("DROP TABLE `room".$id."`");
 						zapis("DROP TABLE `roomchat".$id."`");
+						zapis("DROP TABLE `roomsouboje".$id."`");
 						zapis("DELETE FROM rooms WHERE id='".$id."'");
 						header("Location: index.php");
 						exit;
@@ -75,6 +76,7 @@ if (!isset($nazev)) {
 					if (time() > $allowedatime) {
 						zapis("DROP TABLE `room".$id."`");
 						zapis("DROP TABLE `roomchat".$id."`");
+						zapis("DROP TABLE `roomsouboje".$id."`");
 						zapis("DELETE FROM rooms WHERE id='".$id."'");
 						header("Location: index.php");
 						exit;
@@ -91,11 +93,9 @@ if (!isset($nazev)) {
 						<tr><td style="border-bottom: none;"><div id="chat" style="max-height:40vh; overflow:scroll; overflow-x: hidden;"><div style="text-align:center;"></div></div></td></tr>
 						<tr><td style="border-top: none; text-align:center;"><div id="rolovat" onclick="roluj()"><svg style="width:24px;height:24px" viewBox="0 0 24 24">     <path fill="#000000" d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" /> </svg><svg style="width:24px;height:24px" viewBox="0 0 24 24">     <path fill="#000000" d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" /> </svg><svg style="width:24px;height:24px" viewBox="0 0 24 24">     <path fill="#000000" d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" /> </svg><svg style="width:24px;height:24px" viewBox="0 0 24 24">     <path fill="#000000" d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" /> </svg><svg style="width:24px;height:24px" viewBox="0 0 24 24">     <path fill="#000000" d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" /> </svg></div></td></tr>
 						<tr><td style="border-bottom: none; vertical-align:center;">Zpráva:<br><input id="text" onKeyDown="if(event.keyCode==13) submit();" name="zprava" style="width:99%; height:20px;" autofocus>';
-						/*if(isset($_GET["zprava"])) {echo $_GET["zprava"];}*/
 						echo '</td></tr>
 						<tr><td style="border-top: none; text-align:center;">Čas: <input type="text" id="cas" onKeyDown="if(event.keyCode==13) {submit();} if(event.keyCode==32 || event.keyCode==16 || event.keyCode==17) {zamerit();}" name="cas" value="10';
-						/*if(isset($_GET["cas"])) {echo $_GET["cas"];} else {echo "10";}*/
-						echo '" size="2" maxlength="2">  <!--<input type="hidden" name="id" value="'.$id.'">--> <button type="button" onclick="submit()" style="font-size:1.5rem" id="submit">Odeslat</button><br><div id="roll"></div><div id="odstavec"></div><div style="background-color:#93ff68; border-radius: 15px;"><div id="tick" style="display:none;"><svg style="width:30px;height:30px" viewBox="0 0 24 24">     <path fill="#000000" d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9M10,16V19.08L13.08,16H20V4H4V16H10M16.5,8L11,13.5L7.5,10L8.91,8.59L11,10.67L15.09,6.59L16.5,8Z" /> </svg></div><div id="timetick" style="display:none;"><svg style="width:30px;height:30px" viewBox="0 0 24 24">     <path fill="#000000" d="M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2,4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z" /> </svg></div><div id="submitwrites" style="display:inline;"></div></div><div id="submitchyba" style="display:inline;"></div></td></tr>
+						echo '" size="2" maxlength="2"><button type="button" onclick="submit()" style="font-size:1.5rem" id="submit">Odeslat</button><br><div id="roll"></div><div id="odstavec"></div><div style="background-color:#93ff68; border-radius: 15px;"><div id="tick" style="display:none;"><svg style="width:30px;height:30px" viewBox="0 0 24 24">     <path fill="#000000" d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9M10,16V19.08L13.08,16H20V4H4V16H10M16.5,8L11,13.5L7.5,10L8.91,8.59L11,10.67L15.09,6.59L16.5,8Z" /> </svg></div><div id="timetick" style="display:none;"><svg style="width:30px;height:30px" viewBox="0 0 24 24">     <path fill="#000000" d="M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2,4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z" /> </svg></div><div id="submitwrites" style="display:inline;"></div></div><div id="submitchyba" style="display:inline;"></div></td></tr>
 						</table>
 						</div>
 						</div>
@@ -103,15 +103,51 @@ if (!isset($nazev)) {
 						<div style="text-align:center; display:none;" id="upravit">
 							<div style="display:inline-block; text-align:left; width:95%; height:90%;">
 								<table style="width:100%; border-collapse: collapse; text-align:left; height:100%; background-color:white; color:black;">
-									<tr><td><div id="zrusit" onclick="zpetupr()" style="cursor:pointer;"><svg style="width:24px;height:24px" viewBox="0 0 24 24">
-    <path fill="#555555" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
-</svg><div style="display:inline; color:#555555;"> Zrušit</div></div><br></td></tr>
+									<tr><td><div id="zrusit" onclick="zpetupr()" style="cursor:pointer;"><svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="#555555" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg><div style="display:inline; color:#555555;"> Zrušit</div></div><br></td></tr>
 									<tr><td><div id="divupravit"></div></td></tr>
+									<tr><td style="text-align:center;"><hr><div class="button grey" onclick="add();">Přidat herní postavu</div></td></tr>
+								</table>
+							</div>
+						</div>
+						
+						<div style="text-align:center; display:none;" id="find">
+							<div style="display:inline-block; text-align:left; width:95%; height:90%;">
+								<table style="width:100%; border-collapse: collapse; text-align:left; height:100%; background-color:white; color:black;">
+									<tr><td><div id="fzrusit" onclick="zpetfight()" style="cursor:pointer;"><svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="#555555" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg><div style="display:inline; color:#555555;"> Zrušit</div></div><br></td></tr>
+									<tr><td><div id="divfind"></div></td></tr>
 								</table>
 							</div>
 						</div>
 <script>
-function zamerit(){
+function bojovat(hrac1, hrac2) {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        upravitafter();
+    }
+	};
+	xhttp.open("GET", "rodeslat.php?id='.$id.'&hrac1="+hrac1+"&hrac2="+hrac2+"&bojovat", true);
+	xhttp.send();
+}
+
+function add() {
+	var jmeno = prompt("Zadej jméno postavy", "");
+	if (jmeno != null && jmeno != ""){
+	document.getElementById("editsubmitbtn").style.display = "none";
+	document.getElementById("editsubmittext").style.display = "inline";
+	document.getElementById("editsubmittext").innerHTML = "Úpravy se odesílají na server.";
+	document.getElementById("zrusit").style.display = "none";
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        upravitafter();
+    }
+	};
+	xhttp.open("GET", "rodeslat.php?id='.$id.'&jmeno="+jmeno+"&novy", true);
+	xhttp.send();
+	}
+}
+function zamerit() {
 	document.getElementById("text").focus();
 }
 
@@ -135,13 +171,26 @@ function kick(id) {
 }
 
 function fight(id) {
-	alert("Režim boje ještě není dostupný.");
+	alert(\'Režim boje bude dostupný, jakmile si na vytváření této hry najdu parťáka.\n\nChceš se jím stát?\nNapiš mi na email "bajker006@gmail.com"!\');
+	/*var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("divfind").innerHTML = this.responseText;
+	  	document.getElementById("find").style.display = "block";
+		document.getElementById("fzrusit").style.display = "block";
+		document.getElementById("room").style.display = "none";
+		document.getElementById("upravit").style.display = "none";
+    }
+	};
+	xhttp.open("GET", "rhraci.php?id='.$id.'&hrac="+id+"&find", true);
+	xhttp.send();*/
 }
 
 function editvar(typ, id, hodnota) {
 	if (typ != "" && id != "" && hodnota != "" && !isNaN(hodnota)) {
 		document.getElementById("editsubmittext").style.display = "inline";
 		document.getElementById("editsubmittext").innerHTML = "Úpravy se odesílají na server.";
+		document.getElementById("editsubmitbtn").style.display = "none";
 		document.getElementById("zrusit").style.display = "none";
 	var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -163,17 +212,41 @@ function upravit() {
         document.getElementById("divupravit").innerHTML = this.responseText;
 	  	document.getElementById("upravit").style.display = "block";
 		document.getElementById("zrusit").style.display = "block";
+		document.getElementById("room").style.display = "none";
     }
 	};
 	xhttp.open("GET", "rhraci.php?id='.$id.'&upravit", true);
 	xhttp.send();
-	document.getElementById("room").style.display = "none";
+}
+
+function upravitafter() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("divupravit").innerHTML = this.responseText;
+	  	document.getElementById("upravit").style.display = "block";
+		document.getElementById("zrusit").style.display = "none";
+		document.getElementById("room").style.display = "none";
+		document.getElementById("editsubmittext").style.display = "none";
+		document.getElementById("editsubmitbtn").style.display = "inline";
+		document.getElementById("editsubmitbtn").focus();
+    }
+	};
+	xhttp.open("GET", "rhraci.php?id='.$id.'&upravit", true);
+	xhttp.send();
 }
 
 function zpetupr() {
     document.getElementById("divupravit").innerHTML = "";
 	document.getElementById("upravit").style.display = "none";
 	document.getElementById("room").style.display = "block";
+}
+
+function zpetfight() {
+    document.getElementById("divfind").innerHTML = "";
+	document.getElementById("find").style.display = "none";
+	document.getElementById("upravit").style.display = "block";
+	document.getElementById("zrusit").style.display = "block";
 }
 
 function roluj() {
@@ -463,6 +536,7 @@ setInterval(title, 1000);
 						if (isset($_GET["delete"]) && !isset($_GET["odhlasit"])) {
 							zapis("DROP TABLE `room".$id."`");
 							zapis("DROP TABLE `roomchat".$id."`");
+							zapis("DROP TABLE `roomsouboje".$id."`");
 							zapis("DELETE FROM rooms WHERE id='".$id."'");
 							unset($_SESSION['owner']);
 							echo '<br>Room byl zrušen.<br><a href="index.php">OK</a><style>#room{display:none;}</style>';
@@ -471,6 +545,7 @@ setInterval(title, 1000);
 						if (isset($_GET["delete"]) && isset($_GET["odhlasit"])) {
 							zapis("DROP TABLE `room".$id."`");
 							zapis("DROP TABLE `roomchat".$id."`");
+							zapis("DROP TABLE `roomsouboje".$id."`");
 							zapis("DELETE FROM rooms WHERE id='".$id."'");
 							unset($_SESSION['owner']);
 							echo '<br>Room byl zrušen.<br><a href="login.php?odhlasit">OK</a><style>#room{display:none;}</style>';

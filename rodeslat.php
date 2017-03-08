@@ -53,6 +53,16 @@ if ($pos !== false && isset($_GET["id"])) {
 		zapis("DELETE FROM `room".$_GET["id"]."` WHERE `id` = ".$_GET["hrac"]);
 	}
 }
+if ($pos !== false && isset($_GET["id"])) {
+	if (isset($_GET["novy"]) && isset($_GET["jmeno"])) {
+		zapis("INSERT INTO `room".$_GET["id"]."`(`jmeno`, `pohlavi`, `skutecny`, `penize`, `cp`, `hp`) VALUES ('".$_GET["jmeno"]."', '', 0, 100, 10, 1000)");
+	}
+}
+if ($pos !== false && isset($_GET["id"])) {
+	if (isset($_GET["bojovat"]) && isset($_GET["hrac1"]) && isset($_GET["hrac2"])) {
+		zapis("INSERT INTO `roomsouboje".$_GET["id"]."`(`hrac1`, `hrac2`) VALUES ('".$_GET["hrac1"]."', '".$_GET["hrac2"]."')");
+	}
+}
 
 //secret
 

@@ -69,6 +69,7 @@ if (!isset($nazev) || $_SESSION["owner"] != "s".$id) {
 					if (time() > $allowedztime) {
 						zapis("DROP TABLE `sroom".$klic."`");
 						zapis("DROP TABLE `sroomchat".$klic."`");
+						zapis("DROP TABLE `sroomsouboje".$klic."`");
 						zapis("DELETE FROM secretrooms WHERE klic='".$klic."'");
 						header("Location: index.php");
 						exit;
@@ -76,6 +77,7 @@ if (!isset($nazev) || $_SESSION["owner"] != "s".$id) {
 					if (time() > $allowedatime) {
 						zapis("DROP TABLE `sroom".$klic."`");
 						zapis("DROP TABLE `sroomchat".$klic."`");
+						zapis("DROP TABLE `sroomsouboje".$klic."`");
 						zapis("DELETE FROM secretrooms WHERE klic='".$klic."'");
 						header("Location: index.php");
 						exit;
@@ -87,9 +89,9 @@ if (!isset($nazev) || $_SESSION["owner"] != "s".$id) {
 						<div style="text-align:center;" id="room">
 						<div style="display:inline-block; text-align:left; width:95%; height:90%;">
 						<table style="width:100%; border-collapse: collapse; text-align:left; height:100%; background-color:white; color:black;">
-						<tr><td><div id="info"><div style="text-align:center;"><svg width="40px" height="40px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-default"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(0 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(30 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.08333333333333333s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(60 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.16666666666666666s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(90 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.25s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(120 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.3333333333333333s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(150 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.4166666666666667s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(180 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.5s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(210 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.5833333333333334s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(240 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.6666666666666666s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(270 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.75s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(300 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.8333333333333334s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(330 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.9166666666666666s" repeatCount="indefinite"/></rect></svg></div></div><br><small>Adresa s klíčem: <code>http://bajker006.wz.cz/game/sroom.php?klic='.$klic.'</code><br>Adresa bez klíče (vyžaduje zadání hesla): <code>http://bajker006.wz.cz/game/sroom.php?id='.$id.'</code></td></tr>
+						<tr><td><div id="info"><div style="text-align:center;"><svg width="40px" height="40px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-default"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(0 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(30 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.08333333333333333s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(60 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.16666666666666666s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(90 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.25s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(120 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.3333333333333333s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(150 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.4166666666666667s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(180 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.5s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(210 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.5833333333333334s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(240 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.6666666666666666s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(270 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.75s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(300 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.8333333333333334s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(330 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.9166666666666666s" repeatCount="indefinite"/></rect></svg></div></div><br><small>Adresa s klíčem: <code onclick="vybrat(\'copyprvniadresa\');" id="copyprvniadresa">http://bajker006.wz.cz/game/sroom.php?klic='.$klic.'</code> <span title="Zkopírovat do schránky!"><svg onclick="kopirovatDoSchranky(\'copyprvniadresa\', \'\');" style="width:24px;height:24px; cursor:pointer;" viewBox="0 0 24 24">     <path fill="#000000" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" /> </svg><br></span>Adresa bez klíče (vyžaduje zadání hesla): <code onclick="vybrat(\'copydruhaadresa\');" id="copydruhaadresa">http://bajker006.wz.cz/game/sroom.php?id='.$id.'</code> <span title="Zkopírovat do schránky!"><svg onclick="kopirovatDoSchranky(\'copydruhaadresa\', \'\');" style="width:24px;height:24px; cursor:pointer;" viewBox="0 0 24 24">     <path fill="#000000" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" /> </svg></span></small></td></tr>
 						<tr><td><div id="hraci" onclick="upravit()"><div style="text-align:center;"><svg width="40px" height="40px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-default"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(0 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(30 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.08333333333333333s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(60 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.16666666666666666s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(90 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.25s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(120 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.3333333333333333s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(150 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.4166666666666667s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(180 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.5s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(210 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.5833333333333334s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(240 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.6666666666666666s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(270 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.75s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(300 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.8333333333333334s" repeatCount="indefinite"/></rect><rect  x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#00b2ff" transform="rotate(330 50 50) translate(0 -30)">  <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.9166666666666666s" repeatCount="indefinite"/></rect></svg></div></div></td></tr>
-						<tr><td style="border-bottom: none;"><div id="chat" style="max-height:40vh; overflow:scroll; overflow-x: hidden;"><div style="text-align:center;"></div></div></td></tr>
+						<tr><td style="border-bottom: none;"><div id="chat" style="max-height:30vh; overflow:scroll; overflow-x: hidden;"><div style="text-align:center;"></div></div></td></tr>
 						<tr><td style="border-top: none; text-align:center;"><div id="rolovat" onclick="roluj()"><svg style="width:24px;height:24px" viewBox="0 0 24 24">     <path fill="#000000" d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" /> </svg><svg style="width:24px;height:24px" viewBox="0 0 24 24">     <path fill="#000000" d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" /> </svg><svg style="width:24px;height:24px" viewBox="0 0 24 24">     <path fill="#000000" d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" /> </svg><svg style="width:24px;height:24px" viewBox="0 0 24 24">     <path fill="#000000" d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" /> </svg><svg style="width:24px;height:24px" viewBox="0 0 24 24">     <path fill="#000000" d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" /> </svg></div></td></tr>
 						<tr><td style="border-bottom: none; vertical-align:center;">Zpráva:<br><input id="text" onKeyDown="if(event.keyCode==13) submit();" name="zprava" style="width:99%; height:20px;" autofocus>';
 						/*if(isset($_GET["zprava"])) {echo $_GET["zprava"];}*/
@@ -104,9 +106,7 @@ if (!isset($nazev) || $_SESSION["owner"] != "s".$id) {
 						<div style="text-align:center; display:none;" id="upravit">
 							<div style="display:inline-block; text-align:left; width:95%; height:90%;">
 								<table style="width:100%; border-collapse: collapse; text-align:left; height:100%; background-color:white; color:black;">
-									<tr><td><div id="zrusit" onclick="zpetupr()" style="cursor:pointer;"><svg style="width:24px;height:24px" viewBox="0 0 24 24">
-    <path fill="#555555" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
-</svg><div style="display:inline; color:#555555;"> Zrušit</div></div><br></td></tr>
+									<tr><td><div id="zrusit" onclick="zpetupr()" style="cursor:pointer;"><svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="#555555" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg><div style="display:inline; color:#555555;"> Zrušit</div></div><br></td></tr>
 									<tr><td><div id="divupravit"></div></td></tr>
 								</table>
 							</div>
@@ -133,6 +133,10 @@ function kick(id) {
 	xhttp.open("GET", "rodeslat.php?klic='.$klic.'&hrac="+id+"&kick", true);
 	xhttp.send();	
 	}
+}
+
+function fight(id) {
+	alert(\'Režim boje bude dostupný, jakmile si na vytváření této hry najdu parťáka.\n\nChceš se jím stát?\nNapiš mi na email "bajker006@gmail.com"!\');
 }
 
 function editvar(typ, id, hodnota) {
@@ -447,7 +451,27 @@ function title() {
 }
 setInterval(title, 1000);
 
-</script>
+			function kopirovatDoSchranky(idvyberu, idtlacitka) {
+				vybrat(idvyberu);
+				
+				try {
+					document.execCommand("copy");
+					/*document.getElementById(idtlacitka).innerHTML = "Zkopírováno.";*/
+					} catch (err) {
+					/*document.getElementById(idtlacitka).innerHTML = "Text se nepodařilo zkopírovat.";*/
+				}
+				/*setTimeout(function(){document.getElementById(idtlacitka).innerHTML = "Zkopírovat do schránky!";}, 1500);*/
+				
+				window.getSelection().removeAllRanges();
+			}
+			
+			function vybrat(idvyberu) {
+				var rozsah = document.createRange();
+				rozsah.selectNode(document.getElementById(idvyberu));
+				window.getSelection().removeAllRanges();
+				window.getSelection().addRange(rozsah);
+			}
+		</script>
 						';
 						
 						
@@ -460,6 +484,7 @@ setInterval(title, 1000);
 						if (isset($_GET["delete"]) && !isset($_GET["odhlasit"])) {
 							zapis("DROP TABLE `sroom".$klic."`");
 							zapis("DROP TABLE `sroomchat".$klic."`");
+							zapis("DROP TABLE `sroomsouboje".$klic."`");
 							zapis("DELETE FROM secretrooms WHERE klic='".$klic."'");
 							unset($_SESSION['owner']);
 							echo '<br>Room byl zrušen.<br><a href="index.php">OK</a><style>#room{display:none;}</style>';
@@ -468,6 +493,7 @@ setInterval(title, 1000);
 						if (isset($_GET["delete"]) && isset($_GET["odhlasit"])) {
 							zapis("DROP TABLE `sroom".$klic."`");
 							zapis("DROP TABLE `sroomchat".$klic."`");
+							zapis("DROP TABLE `sroomsouboje".$klic."`");
 							zapis("DELETE FROM secretrooms WHERE klic='".$klic."'");
 							unset($_SESSION['owner']);
 							echo '<br>Room byl zrušen.<br><a href="login.php?odhlasit">OK</a><style>#room{display:none;}</style>';
